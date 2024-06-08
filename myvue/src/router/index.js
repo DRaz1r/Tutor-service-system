@@ -12,6 +12,7 @@ import GoodsManage from "../views/goods/GoodsManage";
 import RecordManage from "../views/record/RecordManage";
 import InfoPublishManage from "../views/infopublish/InfoPublishManage";
 import DemandPublishManage from "../views/demandpublish/DemandPublishManage.vue";
+import Register from '../views/Register.vue';
 //安装路由
 Vue.use(VueRouter);
 const VueRouterPush=VueRouter.prototype.push
@@ -24,6 +25,11 @@ export default new VueRouter({
     {
       path:'/',
       component:login
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
       path:'/Index',

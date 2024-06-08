@@ -30,9 +30,6 @@ public class InfoPublish implements Serializable {
     @ApiModelProperty(value = "用户ID，关联用户ID")
     private Integer userId;
 
-//    @ApiModelProperty(value = "类型，teacher/student")
-//    private String type;
-
     @ApiModelProperty(value = "科目")
     private String subjects;
 
@@ -41,9 +38,6 @@ public class InfoPublish implements Serializable {
 
     @ApiModelProperty(value = "时间")
     private String availableTimes;
-
-//    @ApiModelProperty(value = "家教需求，针对学生")
-//    private String requirement;
 
     @ApiModelProperty(value = "个人简介或其他信息")
     private String introduction;

@@ -13,8 +13,11 @@
             <el-input style="width: 200px" type="password" v-model="loginForm.password"
                       show-password autocomplete="off" size="small" @keyup.enter.native="confirm"></el-input>
           </el-form-item>
-          <el-form-item>
-            <el-button type="primary" @click="confirm" :disabled="confirm_disabled">确 定</el-button>
+          <el-form-item class="button-container">
+                <el-button type="primary" @click="confirm" :disabled="confirm_disabled">确 定</el-button>
+          </el-form-item>
+          <el-form-item> 
+            <el-link type="primary" @click="$router.push('/register')">没有账号？点击注册</el-link>
           </el-form-item>
         </el-form>
       </div>
@@ -81,7 +84,7 @@
       width: 100%;
       height: 100%;
       background-color: #B3C0D1;
-      background-image: url('hittt.png'); /* 添加背景图 */
+      background-image: url('../assets/images/hittt.png'); /* 添加背景图 */
       background-size: cover; /* 背景图覆盖整个容器 */
       background-position: center; /* 背景图居中 */
       background-repeat: no-repeat; /* 不重复背景图 */
