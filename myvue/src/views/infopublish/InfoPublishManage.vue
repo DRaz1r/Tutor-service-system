@@ -189,7 +189,7 @@ export default {
       })
     },
     doMod() {
-     this.$axios.post(this.$httpUrl+'/infopublish/update',this.form).then(res=>res.data).then(res=>{
+      this.$axios.post(this.$httpUrl+'/infopublish/update',this.form).then(res=>res.data).then(res=>{
         console.log(res)
         if(res.code==200){
           this.$message({

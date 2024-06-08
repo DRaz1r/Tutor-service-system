@@ -25,7 +25,6 @@ export default {
   name: "Aside",
   data(){
     return{
-      // isCollapse:false
       menu:[
         {
           menuClick:'Admin',
@@ -37,22 +36,6 @@ export default {
           menuName:'学生管理',
           menuIcon:'el-icon-user-solid'
         },
-
-        // {
-        //   menuClick:'GoodsType',
-        //   menuName:'分类管理',
-        //   menuIcon:'el-icon-menu'
-        // },
-        // {
-        //   menuClick:'Record',
-        //   menuName:'记录管理',
-        //   menuIcon:'el-icon-s-order'
-        // },
-        // {
-        //   menuClick:'Goods',
-        //   menuName:'货品管理',
-        //   menuIcon:'el-icon-takeaway-box'
-        // },
         {
           menuClick:'InfoPublish',
           menuName:'家教信息',
@@ -64,20 +47,14 @@ export default {
           menuIcon:'el-icon-takeaway-box'
         },
         {
-          menuClick:'Storage',
+          menuClick:'Review',//终于找到你
           menuName:'评价反馈',
           menuIcon:'el-icon-office-building'
         }
       ]
     }
   },
-  // computed:{
-  //   "menu":{
-  //     get(){
-  //       return this.$store.state.menu
-  //     }
-  //   }
-  // },
+
   props:{
     isCollapse:Boolean
   }
