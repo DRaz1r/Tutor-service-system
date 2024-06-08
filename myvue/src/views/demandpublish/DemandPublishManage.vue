@@ -57,14 +57,14 @@
             <el-input v-model="form.userId"></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="类型" prop="type">
-          <el-col :span="20">
-            <el-select v-model="form.type" placeholder="请选择类型">
-              <el-option label="teacher" value="teacher"></el-option>
-              <el-option label="student" value="student"></el-option>
-            </el-select>
-          </el-col>
-        </el-form-item>
+<!--        <el-form-item label="类型" prop="type">-->
+<!--          <el-col :span="20">-->
+<!--            <el-select v-model="form.type" placeholder="请选择类型">-->
+<!--              <el-option label="teacher" value="teacher"></el-option>-->
+<!--              <el-option label="student" value="student"></el-option>-->
+<!--            </el-select>-->
+<!--          </el-col>-->
+<!--        </el-form-item>-->
         <el-form-item label="科目" prop="subjects">
           <el-col :span="20">
             <el-input v-model="form.subjects"></el-input>
@@ -85,11 +85,11 @@
             <el-input type="textarea" v-model="form.requirement"></el-input>
           </el-col>
         </el-form-item>
-        <el-form-item label="个人简介" prop="introduction">
-          <el-col :span="20">
-            <el-input type="textarea" v-model="form.introduction"></el-input>
-          </el-col>
-        </el-form-item>
+<!--        <el-form-item label="个人简介" prop="introduction">-->
+<!--          <el-col :span="20">-->
+<!--            <el-input type="textarea" v-model="form.introduction"></el-input>-->
+<!--          </el-col>-->
+<!--        </el-form-item>-->
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取消</el-button>
@@ -168,7 +168,7 @@ export default {
       });
     },
     doSave() {
-      this.$axios.post(this.$httpUrl+'/infopublish/save',this.form).then(res=>res.data).then(res=>{
+      this.$axios.post(this.$httpUrl+'/demandpublish/save',this.form).then(res=>res.data).then(res=>{
         console.log(res)
         if(res.code==200){
 
@@ -188,7 +188,7 @@ export default {
       })
     },
     doMod() {
-      this.$axios.post(this.$httpUrl+'/infopublish/update',this.form).then(res=>res.data).then(res=>{
+      this.$axios.post(this.$httpUrl+'/demandpublish/update',this.form).then(res=>res.data).then(res=>{
         console.log(res)
         if(res.code==200){
           this.$message({
@@ -208,7 +208,7 @@ export default {
       })
     },
     loadPost() {
-      this.$axios.post(this.$httpUrl+'/infopublish/listPage',{
+      this.$axios.post(this.$httpUrl+'/demandpublish/listPage',{
         pageSize:this.pageSize,
         pageNum:this.pageNum,
         param:{

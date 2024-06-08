@@ -20,10 +20,10 @@ public class Storage implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "仓库名")
+    @ApiModelProperty(value = "评价人")
     private String name;
 
-    @ApiModelProperty(value = "备注")
+    @ApiModelProperty(value = "评价内容")
     private String remark;
 
 
