@@ -6,17 +6,16 @@
     <resultMap id="BaseResultMap" type="com.vms.entity.InfoPublish">
         <id column="id" property="id" />
         <result column="user_id" property="userId" />
-        <result column="type" property="type" />
         <result column="subjects" property="subjects" />
         <result column="grades" property="grades" />
         <result column="available_times" property="availableTimes" />
-        <result column="requirement" property="requirement" />
         <result column="introduction" property="introduction" />
+        <result column="imageurl" property="imageUrl" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, user_id, subjects, grades, available_times, introduction
+        id, user_id, subjects, grades, available_times, introduction, imageurl
     </sql>
 
 </mapper>

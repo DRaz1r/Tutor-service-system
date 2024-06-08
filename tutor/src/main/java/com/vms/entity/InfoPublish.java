@@ -43,6 +43,9 @@ public class InfoPublish implements Serializable {
     @ApiModelProperty(value = "个人简介或其他信息")
     private String introduction;
 
+    @ApiModelProperty(value = "图片Url")
+    private String imageUrl;
+
     // 这个字段在数据库表中没有对应的列，因此使用 @TableField 注解
     @TableField(exist = false)
     private String userName;

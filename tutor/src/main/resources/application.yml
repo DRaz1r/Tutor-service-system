@@ -8,3 +8,5 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
 server:
   port: 8081
+file:
+  upload-dir: src/main/resources/img/

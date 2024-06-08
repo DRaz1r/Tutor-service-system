@@ -19,21 +19,23 @@
     <div class="grid-container">
       <div v-for="item in tableData" :key="item.id" class="grid-item">
         <div class="item-content">
+          <!-- 用户名固定在左上角 -->
           <div class="user-name">{{ item.userName }}</div>
+          
+          <!-- 图片占据整个块的宽度 -->
+          <div class="user-avatar-container">
+            <img class="user-avatar" :src="backendUrl+item.imageUrl" alt="用户头像">
+          </div>
+    
+          <!-- 标签竖直排列在图片的左侧 -->
           <div class="tags">
             <span class="tag">{{ item.subjects }}</span>
             <span class="tag">{{ item.grades }}</span>
             <span class="tag">{{ item.availableTimes }}</span>
           </div>
+    
+          <!-- 个人简介显示在图片的下方 -->
           <div class="introduction">{{ item.introduction }}</div>
-          <div class="buttons">
-            <el-button size="small" type="success" @click="mod(item)">编辑</el-button>
-            <el-popconfirm
-              title="确定删除吗？"
-              @confirm="del(item.id)">
-              <el-button slot="reference" size="small" type="danger">删除</el-button>
-            </el-popconfirm>
-          </div>
         </div>
       </div>
     </div>
@@ -78,6 +80,15 @@
             <el-input type="textarea" v-model="form.introduction"></el-input>
           </el-col>
         </el-form-item>
+        <el-form-item label="上传图片">
+          <el-upload
+            action="http://localhost:8081/file/upload"
+            list-type="picture"
+            :on-success="handleUploadSuccess"
+            :on-error="handleUploadError">
+            <el-button size="small" type="primary">点击上传</el-button>
+          </el-upload>
+        </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取消</el-button>
@@ -95,18 +106,19 @@ export default {
       pageSize: 5,
       pageNum: 1,
       total: 0,
+      userId:'',
       subject:'',
       type: '',
+      backendUrl: 'http://localhost:8081',
       dialogVisible: false,
       form: {
         id: '',
         userId: '',
-        type: '',
         subjects: '',
         grades: '',
         availableTimes: '',
-        requirement: '',
-        introduction: ''
+        introduction: '',
+        imageUrl: '' // 存储上传图片的URL
       },
       subjects:[
         {
@@ -131,6 +143,12 @@ export default {
     };
   },
   methods: {
+    handleUploadSuccess(response, file) {
+      this.form.imageUrl = response.data;
+    },
+    handleUploadError(err, file) {
+      console.error('上传失败:', err);
+    },
     selectCurrentChange(val) {
       this.currentRow = val;
     },
@@ -247,48 +265,55 @@ export default {
 <style scoped>
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 控制列数和每列最小/最大宽度 */
-  gap: 20px; /* 设置块之间的间隙 */
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* 网格布局，每行最多容纳三个项目 */
+  gap: 20px; /* 项目之间的间隔 */
 }
 
 .grid-item {
-  background-color: #fff; /* 设置块的背景色 */
-  border: 1px solid #ccc; /* 设置块的边框 */
-  border-radius: 5px; /* 设置块的圆角 */
-  padding: 20px; /* 设置块的内边距 */
+  background-color: #f9f9f9; /* 网格项目背景色 */
+  padding: 10px; /* 网格项目内边距 */
 }
 
 .item-content {
-  display: flex;
-  flex-direction: column;
+  position: relative; /* 项目内容相对定位 */
+  padding: auto;
 }
 
 .user-name {
-  font-weight: bold;
-  font-size: 14px;
-  margin-bottom: 10px;
+  position: absolute; /* 用户名绝对定位，固定在左上角 */
+  top: 10px;
+  left: 10px;
+  margin-bottom: 20px;
+  background-color:burlywood;
+}
+
+.user-avatar-container {
+  margin-bottom: 10px; /* 图片容器底部留白 */
+}
+
+.user-avatar {
+  width: 100%; /* 图片占据整个容器宽度 */
+  height: auto; /* 高度自动调整 */
 }
 
 .tags {
-  margin-bottom: 10px;
+  position: absolute; /* 标签绝对定位，相对于图片的左侧 */
+  top: 10px;
+  left: 10px;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  flex-direction: column; /* 标签竖直排列 */
 }
 
 .tag {
-  display: inline-block;
-  background-color: #f3f3fd;
-  color: #555;
-  padding: 4px 8px;
-  border-radius: 4px;
-  margin-right: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px; /* 标签之间的垂直间距 */
+  margin-top: 10px;
+  background-color:aqua;
 }
 
 .introduction {
-  margin-bottom: 10px;
+  margin-top: 10px; /* 个人简介与图片底部的垂直间距 */
 }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-}
 </style>

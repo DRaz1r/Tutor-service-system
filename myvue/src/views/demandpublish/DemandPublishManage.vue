@@ -27,14 +27,6 @@
             <span class="tag">{{ item.availableTimes }}</span>
           </div>
           <div class="requirement">{{ item.requirement }}</div>
-          <div class="buttons">
-            <el-button size="small" type="success" @click="mod(item)">编辑</el-button>
-            <el-popconfirm
-              title="确定删除吗？"
-              @confirm="del(item.id)">
-              <el-button slot="reference" size="small" type="danger">删除</el-button>
-            </el-popconfirm>
-          </div>
         </div>
       </div>
     </div>
@@ -78,11 +70,6 @@
             <el-input type="textarea" v-model="form.requirement"></el-input>
           </el-col>
         </el-form-item>
-        <!--        <el-form-item label="个人简介" prop="introduction">-->
-        <!--          <el-col :span="20">-->
-        <!--            <el-input type="textarea" v-model="form.introduction"></el-input>-->
-        <!--          </el-col>-->
-        <!--        </el-form-item>-->
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取消</el-button>
