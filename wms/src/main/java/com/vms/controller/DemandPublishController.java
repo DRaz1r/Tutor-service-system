@@ -6,9 +6,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mysql.cj.util.StringUtils;
 import com.vms.common.QueryPageParam;
 import com.vms.common.Result;
-import com.vms.entity.InfoPublish;
+import com.vms.entity.DemandPublish;
 import com.vms.service.DemandPublishService;
-import com.vms.service.InfoPublishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,24 +31,24 @@ public class DemandPublishController {
 
     //修改
     @PostMapping("/mod")
-    public boolean mod(@RequestBody InfoPublish infoPublish){
-        return demandPublishService.updateById(infoPublish);
+    public boolean mod(@RequestBody DemandPublish demandPublish){
+        return demandPublishService.updateById(demandPublish);
     }
 
     //新增
     @PostMapping("/save")
-    public Result save(@RequestBody InfoPublish infoPublish){
-        return demandPublishService.save(infoPublish)?Result.success(null,0):Result.fail();
+    public Result save(@RequestBody DemandPublish demandPublish){
+        return demandPublishService.save(demandPublish)?Result.success(null,0):Result.fail();
     }
     @GetMapping("/findByNo")
     public Result findByNo(@RequestParam String no){
-        List<InfoPublish> list = demandPublishService.lambdaQuery().eq(InfoPublish::getId, no).list();
+        List<DemandPublish> list = demandPublishService.lambdaQuery().eq(DemandPublish::getId, no).list();
         return list.size()>0?Result.success(list,list.size()):Result.fail();
     }
     //新增或修改
     @PostMapping("/saveOrMod")
-    public boolean saveOrMod(@RequestBody InfoPublish infoPublish){
-        return demandPublishService.saveOrUpdate(infoPublish);
+    public boolean saveOrMod(@RequestBody DemandPublish demandPublish){
+        return demandPublishService.saveOrUpdate(demandPublish);
     }
     //删除
     @GetMapping("/delete")
@@ -59,8 +58,8 @@ public class DemandPublishController {
 
     //更新
     @PostMapping("/update")
-    public Result update(@RequestBody InfoPublish infoPublish){
-        return demandPublishService.updateById(infoPublish)?Result.success(null,0):Result.fail();
+    public Result update(@RequestBody DemandPublish demandPublish){
+        return demandPublishService.updateById(demandPublish)?Result.success(null,0):Result.fail();
     }
 
     @PostMapping("/listPage")
@@ -68,19 +67,19 @@ public class DemandPublishController {
         HashMap param = query.getParam();
         String subjects =(String) param.get("subjects");
         String grades =(String) param.get("grades");
-        Page<InfoPublish> userPage = new Page<>();
+        Page<DemandPublish> userPage = new Page<>();
         userPage.setCurrent(query.getPageNum());
         userPage.setSize(query.getPageSize());
 
-        LambdaQueryWrapper<InfoPublish> LambdaQueryWrapper = new LambdaQueryWrapper<>();
+        LambdaQueryWrapper<DemandPublish> LambdaQueryWrapper = new LambdaQueryWrapper<>();
         if(!StringUtils.isNullOrEmpty(subjects)&&!"null".equals(subjects)){
-            LambdaQueryWrapper.eq(InfoPublish::getSubjects,subjects);
+            LambdaQueryWrapper.eq(DemandPublish::getSubjects,subjects);
         }
         if(!StringUtils.isNullOrEmpty(grades)&&!"null".equals(grades)){
-            LambdaQueryWrapper.eq(InfoPublish::getGrades,grades);
+            LambdaQueryWrapper.eq(DemandPublish::getGrades,grades);
         }
 
-        Page<InfoPublish> page = demandPublishService.page(userPage, LambdaQueryWrapper);
+        Page<DemandPublish> page = demandPublishService.page(userPage, LambdaQueryWrapper);
         return Result.success(page.getRecords(),page.getTotal());
     }
 }

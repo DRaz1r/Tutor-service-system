@@ -1,6 +1,6 @@
 package com.vms.mapper;
 
-import com.vms.entity.InfoPublish;
+import com.vms.entity.DemandPublish;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author Fuhang
  * @since 2024-06-07
  */
-public interface DemandPublishMapper extends BaseMapper<InfoPublish> {
+public interface DemandPublishMapper extends BaseMapper<DemandPublish> {
 
 }

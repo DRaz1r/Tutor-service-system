@@ -1,6 +1,6 @@
 package com.vms.service;
 
-import com.vms.entity.InfoPublish;
+import com.vms.entity.DemandPublish;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,6 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author Fuhang
  * @since 2024-06-07
  */
-public interface DemandPublishService extends IService<InfoPublish> {
+public interface DemandPublishService extends IService<DemandPublish> {
 
 }
