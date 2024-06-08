@@ -38,38 +38,7 @@ CREATE TABLE `demand_publish`  (
 -- ----------------------------
 INSERT INTO `demand_publish` VALUES (1, 11, '语文', '高一', '周天', '强化古诗词');
 
--- ----------------------------
--- Table structure for goods
--- ----------------------------
-DROP TABLE IF EXISTS `goods`;
-CREATE TABLE `goods`  (
-                          `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-                          `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '货名',
-                          `storage` int NOT NULL COMMENT '仓库',
-                          `goodsType` int NOT NULL COMMENT '分类',
-                          `count` int NULL DEFAULT NULL COMMENT '数量',
-                          `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '备注',
-                          PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
--- ----------------------------
--- Records of goods
--- ----------------------------
-
--- ----------------------------
--- Table structure for goodstype
--- ----------------------------
-DROP TABLE IF EXISTS `goodstype`;
-CREATE TABLE `goodstype`  (
-                              `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-                              `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '分类名',
-                              `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '备注',
-                              PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of goodstype
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for info_publish
@@ -96,51 +65,33 @@ INSERT INTO `info_publish` VALUES (3, 3, '语文', '高三', '周五', '语文�
 INSERT INTO `info_publish` VALUES (4, 5, '英语', '高三', '周五', '英语教学能手');
 INSERT INTO `info_publish` VALUES (5, 6, '生物', '高三', '周六', '高中生物速成');
 
--- ----------------------------
--- Table structure for menu
--- ----------------------------
-DROP TABLE IF EXISTS `menu`;
-CREATE TABLE `menu`  (
-                         `id` int NOT NULL,
-                         `menuCode` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单编码',
-                         `menuName` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单名字',
-                         `menuLevel` varchar(2) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单级别',
-                         `menuParentCode` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单的父code',
-                         `menuClick` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '点击触发的函数',
-                         `menuRight` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '权限 0超级管理员，1表示老师，2表示学生，可以用逗号组合使用',
-                         `menuComponent` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
-                         `menuIcon` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
-                         PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+-- -- ----------------------------
+-- -- Table structure for menu
+-- -- ----------------------------
+-- DROP TABLE IF EXISTS `menu`;
+-- CREATE TABLE `menu`  (
+--                          `id` int NOT NULL,
+--                          `menuCode` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单编码',
+--                          `menuName` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单名字',
+--                          `menuLevel` varchar(2) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单级别',
+--                          `menuParentCode` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单的父code',
+--                          `menuClick` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '点击触发的函数',
+--                          `menuRight` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '权限 0超级管理员，1表示老师，2表示学生，可以用逗号组合使用',
+--                          `menuComponent` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+--                          `menuIcon` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+--                          PRIMARY KEY (`id`) USING BTREE
+-- ) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+--
+-- -- ----------------------------
+-- -- Records of menu
+-- -- ----------------------------
+-- INSERT INTO `menu` VALUES (1, '001', '教师管理', '1', NULL, 'Admin', '0', 'admin/AdminManage.vue', 'el-icon-s-custom');
+-- INSERT INTO `menu` VALUES (2, '002', '学生管理', '1', NULL, 'User', '0,1', 'user/UserManage.vue', 'el-icon-user-solid');
+-- INSERT INTO `menu` VALUES (3, '003', '仓库管理', '1', NULL, 'Storage', '0,1', 'storage/StorageManage', 'el-icon-office-building');
+-- INSERT INTO `menu` VALUES (4, '004', '物品分类管理', '1', NULL, 'Goodstype', '0,1', 'goodstype/GoodstypeManage', 'el-icon-menu');
+-- INSERT INTO `menu` VALUES (5, '005', '物品管理 ', '1', NULL, 'Goods', '0,1,2', 'goods/GoodsManage', 'el-icon-s-management');
+-- INSERT INTO `menu` VALUES (6, '006', '记录管理', '1', NULL, 'Record', '0,1,2', 'record/RecordManage', 'el-icon-s-order');
 
--- ----------------------------
--- Records of menu
--- ----------------------------
-INSERT INTO `menu` VALUES (1, '001', '教师管理', '1', NULL, 'Admin', '0', 'admin/AdminManage.vue', 'el-icon-s-custom');
-INSERT INTO `menu` VALUES (2, '002', '学生管理', '1', NULL, 'User', '0,1', 'user/UserManage.vue', 'el-icon-user-solid');
-INSERT INTO `menu` VALUES (3, '003', '仓库管理', '1', NULL, 'Storage', '0,1', 'storage/StorageManage', 'el-icon-office-building');
-INSERT INTO `menu` VALUES (4, '004', '物品分类管理', '1', NULL, 'Goodstype', '0,1', 'goodstype/GoodstypeManage', 'el-icon-menu');
-INSERT INTO `menu` VALUES (5, '005', '物品管理 ', '1', NULL, 'Goods', '0,1,2', 'goods/GoodsManage', 'el-icon-s-management');
-INSERT INTO `menu` VALUES (6, '006', '记录管理', '1', NULL, 'Record', '0,1,2', 'record/RecordManage', 'el-icon-s-order');
-
--- ----------------------------
--- Table structure for record
--- ----------------------------
-DROP TABLE IF EXISTS `record`;
-CREATE TABLE `record`  (
-                           `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-                           `goods` int NOT NULL COMMENT '货品id',
-                           `userId` int NULL DEFAULT NULL COMMENT '取货人/补货人',
-                           `admin_id` int NULL DEFAULT NULL COMMENT '操作人id',
-                           `count` int NULL DEFAULT NULL COMMENT '数量',
-                           `createtime` datetime NULL DEFAULT NULL COMMENT '操作时间',
-                           `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '备注',
-                           PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of record
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for reviews

@@ -1,15 +1,11 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import main from "../views/Main";
 import Index from "../views/Index";
 import login from "../views/Login";
 import Home from "../views/Home";
 import AdminManage from "../views/admin/AdminManage";
 import UserManage from "../views/user/UserManage";
 import StorageManage from "../views/storage/StorageManage";
-import GoodsTypeManage from "../views/goodstype/GoodsTypeManage";
-import GoodsManage from "../views/goods/GoodsManage";
-import RecordManage from "../views/record/RecordManage";
 import InfoPublishManage from "../views/infopublish/InfoPublishManage";
 import DemandPublishManage from "../views/demandpublish/DemandPublishManage.vue";
 import Register from '../views/Register.vue';
@@ -56,34 +52,6 @@ export default new VueRouter({
           }
         },
         {
-          path: '/Storage',
-          component: StorageManage,
-          meta: {
-            title: '仓库管理'
-          }
-        },
-        {
-          path: '/GoodsType',
-          component: GoodsTypeManage,
-          meta: {
-            title: '分类管理'
-          }
-        },
-        {
-          path: '/Record',
-          component: RecordManage,
-          meta: {
-            title: '记录管理'
-          }
-        },
-        {
-          path: '/Goods',
-          component: GoodsManage,
-          meta: {
-            title: '分类管理'
-          }
-        },
-        {
           path: '/InfoPublish',
           component: InfoPublishManage,
           meta: {
@@ -95,6 +63,13 @@ export default new VueRouter({
           component: DemandPublishManage,
           meta: {
             title: '学生信息'
+          }
+        },
+        {
+          path: '/Storage',
+          component: StorageManage,
+          meta: {
+            title: '仓库管理'
           }
         }
       ]
