@@ -11,7 +11,7 @@
  Target Server Version : 80037 (8.0.37)
  File Encoding         : 65001
 
- Date: 08/06/2024 12:38:46
+ Date: 08/06/2024 13:35:08
 */
 
 SET NAMES utf8mb4;
@@ -22,33 +22,34 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `demand_publish`;
 CREATE TABLE `demand_publish`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `user_id` int NOT NULL COMMENT '用户ID，关联用户ID',
-  `subjects` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '科目',
-  `grades` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '年级',
-  `available_times` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '时间',
-  `requirement` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '家教需求，针对学生',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  CONSTRAINT `demand_publish_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                                   `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+                                   `user_id` int NOT NULL COMMENT '用户ID，关联用户ID',
+                                   `subjects` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '科目',
+                                   `grades` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '年级',
+                                   `available_times` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '时间',
+                                   `requirement` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '家教需求，针对学生',
+                                   PRIMARY KEY (`id`) USING BTREE,
+                                   INDEX `user_id`(`user_id` ASC) USING BTREE,
+                                   CONSTRAINT `demand_publish_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of demand_publish
 -- ----------------------------
+INSERT INTO `demand_publish` VALUES (1, 11, '语文', '高一', '周天', '强化古诗词');
 
 -- ----------------------------
 -- Table structure for goods
 -- ----------------------------
 DROP TABLE IF EXISTS `goods`;
 CREATE TABLE `goods`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '货名',
-  `storage` int NOT NULL COMMENT '仓库',
-  `goodsType` int NOT NULL COMMENT '分类',
-  `count` int NULL DEFAULT NULL COMMENT '数量',
-  `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
+                          `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+                          `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '货名',
+                          `storage` int NOT NULL COMMENT '仓库',
+                          `goodsType` int NOT NULL COMMENT '分类',
+                          `count` int NULL DEFAULT NULL COMMENT '数量',
+                          `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '备注',
+                          PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -60,10 +61,10 @@ CREATE TABLE `goods`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `goodstype`;
 CREATE TABLE `goodstype`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '分类名',
-  `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
+                              `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+                              `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '分类名',
+                              `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '备注',
+                              PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -75,76 +76,41 @@ CREATE TABLE `goodstype`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `info_publish`;
 CREATE TABLE `info_publish`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `user_id` int NOT NULL COMMENT '用户ID，关联用户ID',
-  `subjects` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '科目',
-  `grades` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '年级',
-  `available_times` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '时间',
-  `introduction` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '个人简介或其他信息',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  CONSTRAINT `info_publish_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+                                 `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+                                 `user_id` int NOT NULL COMMENT '用户ID，关联用户ID',
+                                 `subjects` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '科目',
+                                 `grades` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '年级',
+                                 `available_times` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '时间',
+                                 `introduction` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '个人简介或其他信息',
+                                 PRIMARY KEY (`id`) USING BTREE,
+                                 INDEX `user_id`(`user_id` ASC) USING BTREE,
+                                 CONSTRAINT `info_publish_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of info_publish
 -- ----------------------------
-INSERT INTO `info_publish` VALUES (1, 2, '数学', '高中', '上午', '有责任心，从教5年。');
-INSERT INTO `info_publish` VALUES (2, 3, '语文', '初中', '上午', '有耐心，从教3年。');
-INSERT INTO `info_publish` VALUES (3, 5, '英语', '高中', '晚上', '擅长口语，从教7年。');
-INSERT INTO `info_publish` VALUES (4, 6, '语文', '高中', '下午', '有实验经验，从教6年。');
-INSERT INTO `info_publish` VALUES (5, 9, '语文', '高中', '下午', '有实验室经验，从教4年。');
--- INSERT INTO `info_publish` VALUES (6, 7, '生物', '高中', '晚上', '有实验室经验，从教3年。');
--- INSERT INTO `info_publish` VALUES (7, 8, '历史', '初中', '下午', '有教学经验，从教5年。');
--- INSERT INTO `info_publish` VALUES (8, 9, '地理', '高中', '下午', '有教学经验，从教6年。');
--- INSERT INTO `info_publish` VALUES (9, 10, '政治', '高中', '晚上', '有教学经验，从教7年。');
--- INSERT INTO `info_publish` VALUES (10, 11, '体育', '初中', '下午', '有教学经验，从教4年。');
--- INSERT INTO `info_publish` VALUES (11, 12, '美术', '高中', '晚上', '有教学经验，从教3年。');
-
-
--- ----------------------------
--- Table structure for demand_publish
--- ----------------------------
-DROP TABLE IF EXISTS `demand_publish`;
-CREATE TABLE `demand_publish`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `user_id` int NOT NULL COMMENT '用户ID，关联用户ID',
-  `subjects` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '科目',
-  `grades` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '年级',
-  `available_times` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '时间',
-  `requirement` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '家教需求，针对学生',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  CONSTRAINT `demand_publish_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of demand_publish
--- ----------------------------
-INSERT INTO `demand_publish` VALUES (1, 4, '数学', '高中', '周末', '想找一个负责任的老师');
-INSERT INTO `demand_publish` VALUES (2, 7, '语文', '高中', '周末', '想找一个男老师');
-INSERT INTO `demand_publish` VALUES (3, 8, '语文', '高中', '周末', '想找一个女老师');
-INSERT INTO `demand_publish` VALUES (4, 10, '英语', '高中', '周末', '想找一个有留学经历老师');
-INSERT INTO `demand_publish` VALUES (5, 11, '数学', '高中', '工作日', '想找一个年轻老师');
-INSERT INTO `demand_publish` VALUES (6, 12, '数学', '高中', '工作日', '想找一个教学经验丰富的老师');
-
-
+INSERT INTO `info_publish` VALUES (1, 2, '数学', '高一', '周三', '有责任心，从教5年。');
+INSERT INTO `info_publish` VALUES (2, 2, '数学', '高二', '周六', '有责任心，从教5年。');
+INSERT INTO `info_publish` VALUES (3, 3, '语文', '高三', '周五', '语文教学能手');
+INSERT INTO `info_publish` VALUES (4, 5, '英语', '高三', '周五', '英语教学能手');
+INSERT INTO `info_publish` VALUES (5, 6, '生物', '高三', '周六', '高中生物速成');
 
 -- ----------------------------
 -- Table structure for menu
 -- ----------------------------
 DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu`  (
-  `id` int NOT NULL,
-  `menuCode` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单编码',
-  `menuName` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单名字',
-  `menuLevel` varchar(2) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单级别',
-  `menuParentCode` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单的父code',
-  `menuClick` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '点击触发的函数',
-  `menuRight` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '权限 0超级管理员，1表示老师，2表示学生，可以用逗号组合使用',
-  `menuComponent` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
-  `menuIcon` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
+                         `id` int NOT NULL,
+                         `menuCode` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单编码',
+                         `menuName` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单名字',
+                         `menuLevel` varchar(2) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单级别',
+                         `menuParentCode` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '菜单的父code',
+                         `menuClick` varchar(16) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '点击触发的函数',
+                         `menuRight` varchar(8) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '权限 0超级管理员，1表示老师，2表示学生，可以用逗号组合使用',
+                         `menuComponent` varchar(200) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+                         `menuIcon` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+                         PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -162,14 +128,14 @@ INSERT INTO `menu` VALUES (6, '006', '记录管理', '1', NULL, 'Record', '0,1,2
 -- ----------------------------
 DROP TABLE IF EXISTS `record`;
 CREATE TABLE `record`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `goods` int NOT NULL COMMENT '货品id',
-  `userId` int NULL DEFAULT NULL COMMENT '取货人/补货人',
-  `admin_id` int NULL DEFAULT NULL COMMENT '操作人id',
-  `count` int NULL DEFAULT NULL COMMENT '数量',
-  `createtime` datetime NULL DEFAULT NULL COMMENT '操作时间',
-  `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '备注',
-  PRIMARY KEY (`id`) USING BTREE
+                           `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+                           `goods` int NOT NULL COMMENT '货品id',
+                           `userId` int NULL DEFAULT NULL COMMENT '取货人/补货人',
+                           `admin_id` int NULL DEFAULT NULL COMMENT '操作人id',
+                           `count` int NULL DEFAULT NULL COMMENT '数量',
+                           `createtime` datetime NULL DEFAULT NULL COMMENT '操作时间',
+                           `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '备注',
+                           PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -181,17 +147,17 @@ CREATE TABLE `record`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `reviews`;
 CREATE TABLE `reviews`  (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `publish_id` int NOT NULL COMMENT '信息发布ID, 关联info_publish表的id',
-  `user_id` int NOT NULL COMMENT '评价用户的ID，关联用户ID',
-  `rating` int NOT NULL COMMENT '评分',
-  `comment` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '评论内容',
-  `created_at` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '评价时间',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `publish_id`(`publish_id` ASC) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`publish_id`) REFERENCES `info_publish` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
-  CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
+                            `id` int NOT NULL AUTO_INCREMENT,
+                            `publish_id` int NOT NULL COMMENT '信息发布ID, 关联info_publish表的id',
+                            `user_id` int NOT NULL COMMENT '评价用户的ID，关联用户ID',
+                            `rating` int NOT NULL COMMENT '评分',
+                            `comment` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '评论内容',
+                            `created_at` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '评价时间',
+                            PRIMARY KEY (`id`) USING BTREE,
+                            INDEX `publish_id`(`publish_id` ASC) USING BTREE,
+                            INDEX `user_id`(`user_id` ASC) USING BTREE,
+                            CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`publish_id`) REFERENCES `info_publish` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
+                            CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -203,11 +169,11 @@ CREATE TABLE `reviews`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `storage`;
 CREATE TABLE `storage`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '评价人',
-  `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '评价内容',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+                            `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+                            `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '评价人',
+                            `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '评价内容',
+                            PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of storage
@@ -215,22 +181,21 @@ CREATE TABLE `storage`  (
 INSERT INTO `storage` VALUES (1, 'why', '系统简洁易用，赞！');
 INSERT INTO `storage` VALUES (2, '张三', '太棒了！');
 
-
 -- ----------------------------
 -- Table structure for user
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `no` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '账号',
-  `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '名字',
-  `password` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '密码',
-  `age` int NULL DEFAULT NULL,
-  `sex` int NULL DEFAULT NULL COMMENT '性别',
-  `phone` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '电话',
-  `role_id` int NULL DEFAULT NULL COMMENT '角色 0超级管理员，1老师，2学生',
-  `isValid` varchar(4) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT 'Y' COMMENT '是否有效，Y有效，其他无效',
-  PRIMARY KEY (`id`) USING BTREE
+                         `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+                         `no` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '账号',
+                         `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '名字',
+                         `password` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '密码',
+                         `age` int NULL DEFAULT NULL,
+                         `sex` int NULL DEFAULT NULL COMMENT '性别',
+                         `phone` varchar(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '电话',
+                         `role_id` int NULL DEFAULT NULL COMMENT '角色 0超级管理员，1老师，2学生',
+                         `isValid` varchar(4) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT 'Y' COMMENT '是否有效，Y有效，其他无效',
+                         PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
