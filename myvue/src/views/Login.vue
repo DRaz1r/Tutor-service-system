@@ -1,27 +1,26 @@
 <template>
-    <div class="loginBody">
-        <div class="loginDiv">
-            <div class="login-content">
-                <h1 class="login-title">用户登录</h1>
-                <el-form :model="loginForm" label-width="100px"
-                         :rules="rules" ref="loginForm">
-                    <el-form-item label="账号" prop="no">
-                        <el-input style="width: 200px" type="text" v-model="loginForm.no"
-                                  autocomplete="off" size="small"></el-input>
-                    </el-form-item>
-                    <el-form-item label="密码" prop="password">
-                        <el-input style="width: 200px" type="password" v-model="loginForm.password"
-                                  show-password autocomplete="off" size="small" @keyup.enter.native="confirm"></el-input>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @click="confirm" :disabled="confirm_disabled">确 定</el-button>
-                    </el-form-item>
-                </el-form>
-            </div>
-        </div>
+  <div class="loginBody">
+    <div class="loginDiv">
+      <div class="login-content">
+        <h1 class="login-title">用户登录</h1>
+        <el-form :model="loginForm" label-width="100px"
+                 :rules="rules" ref="loginForm">
+          <el-form-item label="账号" prop="no">
+            <el-input style="width: 200px" type="text" v-model="loginForm.no"
+                      autocomplete="off" size="small"></el-input>
+          </el-form-item>
+          <el-form-item label="密码" prop="password">
+            <el-input style="width: 200px" type="password" v-model="loginForm.password"
+                      show-password autocomplete="off" size="small" @keyup.enter.native="confirm"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="confirm" :disabled="confirm_disabled">确 定</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
     </div>
+  </div>
 </template>
-
 
 <script>
     export default {
@@ -78,10 +77,14 @@
 
 <style scoped>
     .loginBody {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-color: #B3C0D1;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #B3C0D1;
+      background-image: url('hittt.png'); /* 添加背景图 */
+      background-size: cover; /* 背景图覆盖整个容器 */
+      background-position: center; /* 背景图居中 */
+      background-repeat: no-repeat; /* 不重复背景图 */
     }
     .loginDiv {
         position: absolute;

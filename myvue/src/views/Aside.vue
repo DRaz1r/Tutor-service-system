@@ -29,38 +29,44 @@ export default {
       menu:[
         {
           menuClick:'Admin',
-          menuName:'管理员管理',
+          menuName:'教师管理',
           menuIcon:'el-icon-s-custom'
         },
         {
           menuClick:'User',
-          menuName:'用户管理',
+          menuName:'学生管理',
           menuIcon:'el-icon-user-solid'
         },
-        {
-          menuClick:'Storage',
-          menuName:'仓库管理',
-          menuIcon:'el-icon-office-building'
-        },
-        {
-          menuClick:'GoodsType',
-          menuName:'分类管理',
-          menuIcon:'el-icon-menu'
-        },
-        {
-          menuClick:'Record',
-          menuName:'记录管理',
-          menuIcon:'el-icon-s-order'
-        },
-        {
-          menuClick:'Goods',
-          menuName:'货品管理',
-          menuIcon:'el-icon-takeaway-box'
-        },
+
+        // {
+        //   menuClick:'GoodsType',
+        //   menuName:'分类管理',
+        //   menuIcon:'el-icon-menu'
+        // },
+        // {
+        //   menuClick:'Record',
+        //   menuName:'记录管理',
+        //   menuIcon:'el-icon-s-order'
+        // },
+        // {
+        //   menuClick:'Goods',
+        //   menuName:'货品管理',
+        //   menuIcon:'el-icon-takeaway-box'
+        // },
         {
           menuClick:'InfoPublish',
           menuName:'家教信息',
           menuIcon:'el-icon-takeaway-box'
+        },
+        {
+          menuClick:'InfoPublish',
+          menuName:'学生信息',
+          menuIcon:'el-icon-takeaway-box'
+        },
+        {
+          menuClick:'Storage',
+          menuName:'评价反馈',
+          menuIcon:'el-icon-office-building'
         }
       ]
     }

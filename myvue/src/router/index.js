@@ -38,14 +38,14 @@ export default new VueRouter({
           path:'/Admin',
           component:AdminManage,
           meta:{
-            title:'管理员管理'
+            title:'教师管理'
           }
         },
         {
           path:'/User',
           component:UserManage,
           meta:{
-            title:'用户管理'
+            title:'学生管理'
           }
         },
         {
