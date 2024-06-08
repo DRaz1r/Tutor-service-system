@@ -59,7 +59,7 @@ export default {
           menuIcon:'el-icon-takeaway-box'
         },
         {
-          menuClick:'InfoPublish',
+          menuClick:'DemandPublish',
           menuName:'学生信息',
           menuIcon:'el-icon-takeaway-box'
         },

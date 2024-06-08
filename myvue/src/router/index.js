@@ -11,6 +11,7 @@ import GoodsTypeManage from "../views/goodstype/GoodsTypeManage";
 import GoodsManage from "../views/goods/GoodsManage";
 import RecordManage from "../views/record/RecordManage";
 import InfoPublishManage from "../views/infopublish/InfoPublishManage";
+import DemandPublishManage from "../views/demandpublish/DemandPublishManage.vue";
 //安装路由
 Vue.use(VueRouter);
 const VueRouterPush=VueRouter.prototype.push
@@ -80,7 +81,14 @@ export default new VueRouter({
           path: '/InfoPublish',
           component: InfoPublishManage,
           meta: {
-            title: '家教信息管理'
+            title: '家教信息'
+          }
+        },
+        {
+          path: '/DemandPublish',
+          component: DemandPublishManage,
+          meta: {
+            title: '学生信息'
           }
         }
       ]

@@ -18,8 +18,8 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="InfoPublish对象", description="")
-public class InfoPublish implements Serializable {
+@ApiModel(value="DemandPublish对象", description="")
+public class DemandPublish implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -42,11 +42,11 @@ public class InfoPublish implements Serializable {
     @ApiModelProperty(value = "时间")
     private String availableTimes;
 
-//    @ApiModelProperty(value = "家教需求，针对学生")
-//    private String requirement;
+    @ApiModelProperty(value = "家教需求，针对学生")
+    private String requirement;
 
-    @ApiModelProperty(value = "个人简介或其他信息")
-    private String introduction;
+//    @ApiModelProperty(value = "个人简介或其他信息")
+//    private String introduction;
 
 
 }
