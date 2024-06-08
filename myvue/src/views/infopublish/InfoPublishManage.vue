@@ -1,11 +1,19 @@
 <template>
   <div>
     <div style="margin-bottom: 5px">
-      <el-input v-model="userId" placeholder="请输入用户ID" suffix-icon="el-icon-search" style="width: 120px"
+      <el-input v-model="userId" placeholder="请输入用户ID  " suffix-icon="el-icon-search" style="width: 136px"
                 @keyup.enter.native="loadPost"></el-input>
-      <el-select v-model="type" placeholder="请选择类型" style="margin-left: 5px;width: 120px">
-        <el-option label="teacher" value="teacher"></el-option>
-        <el-option label="student" value="student"></el-option>
+<!--      <el-select v-model="type" placeholder="请选择类型" style="margin-left: 5px;width: 120px">-->
+<!--        <el-option label="teacher" value="teacher"></el-option>-->
+<!--        <el-option label="student" value="student"></el-option>-->
+<!--      </el-select>-->
+      <el-select v-model="info_publish" filterable placeholder="请选择科目" style="margin-left: 5px">
+        <el-option
+          v-for="item in subjects"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
       </el-select>
 
       <el-button type="primary" style="margin-left: 5px" @click="loadPost">查询</el-button>
@@ -120,6 +128,18 @@ export default {
         requirement: '',
         introduction: ''
       },
+      subjects:[
+        {
+          value: '2',
+          label: '语文'
+        }, {
+          value: '1',
+          label: '数学'
+        }, {
+          value: '0',
+          label: '英语'
+        }
+      ],
       rules: {
         user_id: [
           { required: true, message: '请输入用户ID', trigger: 'blur' },
