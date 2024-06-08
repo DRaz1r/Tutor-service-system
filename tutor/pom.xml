@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.vms</groupId>
-    <artifactId>wms</artifactId>
+    <artifactId>tutor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>wms</name>
-    <description>wms</description>
+    <name>tutor</name>
+    <description>tutor</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -28,6 +28,7 @@
         </dependency>
 
         <dependency>
+            <groupId>org.projectlombok</groupId>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
