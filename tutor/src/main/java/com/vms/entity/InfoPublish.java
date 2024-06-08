@@ -2,6 +2,7 @@ package com.vms.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -42,5 +43,7 @@ public class InfoPublish implements Serializable {
     @ApiModelProperty(value = "个人简介或其他信息")
     private String introduction;
 
-
+    // 这个字段在数据库表中没有对应的列，因此使用 @TableField 注解
+    @TableField(exist = false)
+    private String userName;
 }

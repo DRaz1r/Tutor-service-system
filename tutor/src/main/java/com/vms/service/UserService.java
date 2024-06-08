@@ -8,7 +8,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.vms.entity.user;
 
-public interface UserService extends IService<user> {
+import java.util.List;
 
+public interface UserService extends IService<user> {
     Page pageCC(Page<user> page, Wrapper Wrapper);
 }

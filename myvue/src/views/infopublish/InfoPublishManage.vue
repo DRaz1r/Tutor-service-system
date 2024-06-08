@@ -19,7 +19,7 @@
     <div class="grid-container">
       <div v-for="item in tableData" :key="item.id" class="grid-item">
         <div class="item-content">
-          <div class="user-id">{{ item.userId }}</div>
+          <div class="user-name">{{ item.userName }}</div>
           <div class="tags">
             <span class="tag">{{ item.subjects }}</span>
             <span class="tag">{{ item.grades }}</span>
@@ -96,7 +96,6 @@ export default {
       pageNum: 1,
       total: 0,
       subject:'',
-      userId: '',
       type: '',
       dialogVisible: false,
       form: {
@@ -264,7 +263,7 @@ export default {
   flex-direction: column;
 }
 
-.user-id {
+.user-name {
   font-weight: bold;
   font-size: 14px;
   margin-bottom: 10px;

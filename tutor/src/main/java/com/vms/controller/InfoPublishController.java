@@ -67,19 +67,20 @@ public class InfoPublishController {
         HashMap param = query.getParam();
         String subject =(String) param.get("subject");
         String grade =(String) param.get("grade");
+
         Page<InfoPublish> userPage = new Page<>();
         userPage.setCurrent(query.getPageNum());
         userPage.setSize(query.getPageSize());
 
-        LambdaQueryWrapper<InfoPublish> LambdaQueryWrapper = new LambdaQueryWrapper<>();
+        LambdaQueryWrapper<InfoPublish> queryWrapper = new LambdaQueryWrapper<>();
         if(!StringUtils.isNullOrEmpty(subject)&&!"null".equals(subject)){
-            LambdaQueryWrapper.eq(InfoPublish::getSubjects,subject);
+            queryWrapper.eq(InfoPublish::getSubjects,subject);
         }
         if(!StringUtils.isNullOrEmpty(grade)&&!"null".equals(grade)){
-            LambdaQueryWrapper.eq(InfoPublish::getGrades,grade);
+            queryWrapper.eq(InfoPublish::getGrades,grade);
         }
 
-        Page<InfoPublish> page = infoPublishService.page(userPage, LambdaQueryWrapper);
-        return Result.success(page.getRecords(),page.getTotal());
+        Page<InfoPublish> page = infoPublishService.getInfoPublishWithUsername(userPage, queryWrapper);
+        return Result.success(page.getRecords(), page.getTotal());
     }
 }

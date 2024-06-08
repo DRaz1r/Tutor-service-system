@@ -11,11 +11,13 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 
 @Mapper
 public interface UserMapper extends BaseMapper<user> {
 
     @Select("select * from user ${ew.customSqlSegment}")
     Page pageCC(Page<user> page, @Param(Constants.WRAPPER) Wrapper wrapper);
-
+    
 }
