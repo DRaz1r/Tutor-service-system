@@ -36,9 +36,9 @@ CREATE TABLE `demand_publish`  (
 -- ----------------------------
 -- Records of demand_publish
 -- ----------------------------
-INSERT INTO `demand_publish` VALUES (1, 11, '语文', '高一', '周天', '强化古诗词');
-
-
+INSERT INTO `demand_publish` VALUES (1, 11, '语文', '高一', '周天', '帮我强化古诗词');
+INSERT INTO `demand_publish` VALUES (2, 4, '数学', '高二', '周一', '找数学专业的老师');
+INSERT INTO `demand_publish` VALUES (3, 7, '英语', '高三', '周二', '要求要有留学经历的老师');
 
 -- ----------------------------
 -- Table structure for info_publish
@@ -87,39 +87,18 @@ CREATE TABLE `menu`  (
 -- ----------------------------
 INSERT INTO `menu` VALUES (1, '001', '教师管理', '1', NULL, 'Admin', '0', 'admin/AdminManage.vue', 'el-icon-s-custom');
 INSERT INTO `menu` VALUES (2, '002', '学生管理', '1', NULL, 'User', '0,1', 'user/UserManage.vue', 'el-icon-user-solid');
-INSERT INTO `menu` VALUES (3, '003', '教师信息', '1', NULL, 'Storage', '0,1', 'storage/StorageManage', 'el-icon-office-building');
+INSERT INTO `menu` VALUES (3, '003', '教师信息', '1', NULL, 'Review', '0,1', 'review/StorageManage', 'el-icon-office-building');
 INSERT INTO `menu` VALUES (4, '004', '学生信息', '1', NULL, 'Goodstype', '0,1', 'goodstype/GoodstypeManage', 'el-icon-menu');
 INSERT INTO `menu` VALUES (5, '005', '评价信息 ', '1', NULL, 'Goods', '0,1,2', 'goods/GoodsManage', 'el-icon-s-management');
 INSERT INTO `menu` VALUES (6, '006', '系统主页', '1', NULL, 'Record', '0,1,2', 'record/RecordManage', 'el-icon-s-order');
 
 
--- ----------------------------
--- Table structure for reviews
--- ----------------------------
-DROP TABLE IF EXISTS `reviews`;
-CREATE TABLE `reviews`  (
-                            `id` int NOT NULL AUTO_INCREMENT,
-                            `publish_id` int NOT NULL COMMENT '信息发布ID, 关联info_publish表的id',
-                            `user_id` int NOT NULL COMMENT '评价用户的ID，关联用户ID',
-                            `rating` int NOT NULL COMMENT '评分',
-                            `comment` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '评论内容',
-                            `created_at` datetime NULL DEFAULT CURRENT_TIMESTAMP COMMENT '评价时间',
-                            PRIMARY KEY (`id`) USING BTREE,
-                            INDEX `publish_id`(`publish_id` ASC) USING BTREE,
-                            INDEX `user_id`(`user_id` ASC) USING BTREE,
-                            CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`publish_id`) REFERENCES `info_publish` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT,
-                            CONSTRAINT `reviews_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Records of reviews
+-- Table structure for review
 -- ----------------------------
-
--- ----------------------------
--- Table structure for storage
--- ----------------------------
-DROP TABLE IF EXISTS `storage`;
-CREATE TABLE `storage`  (
+DROP TABLE IF EXISTS `review`;
+CREATE TABLE `review`  (
                             `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
                             `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '评价人',
                             `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '评价内容',
@@ -127,10 +106,10 @@ CREATE TABLE `storage`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Records of storage
+-- Records of review
 -- ----------------------------
-INSERT INTO `storage` VALUES (1, 'why', '系统简洁易用，赞！');
-INSERT INTO `storage` VALUES (2, '张三', '太棒了！');
+INSERT INTO `review` VALUES (1, 'why', '系统简洁易用，赞！');
+INSERT INTO `review` VALUES (2, '张三', '太棒了！');
 
 -- ----------------------------
 -- Table structure for user

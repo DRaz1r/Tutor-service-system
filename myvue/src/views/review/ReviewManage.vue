@@ -68,7 +68,7 @@
 
 <script>
 export default {
-  name: "StorageManage",
+  name: "ReviewManage",
   data() {
 
     return {
@@ -112,7 +112,7 @@ export default {
     del(id){
       console.log(id)
 
-      this.$axios.get(this.$httpUrl+'/storage/delete?id='+id).then(res=>res.data).then(res=>{
+      this.$axios.get(this.$httpUrl+'/review/delete?id='+id).then(res=>res.data).then(res=>{
         console.log(res)
         if(res.code==200){
 
@@ -132,7 +132,7 @@ export default {
 
     },
     doSave(){
-      this.$axios.post(this.$httpUrl+'/storage/save',this.form).then(res=>res.data).then(res=>{
+      this.$axios.post(this.$httpUrl+'/review/save',this.form).then(res=>res.data).then(res=>{
         console.log(res)
         if(res.code==200){
 
@@ -153,7 +153,7 @@ export default {
       })
     },
     doMod(){
-      this.$axios.post(this.$httpUrl+'/storage/update',this.form).then(res=>res.data).then(res=>{
+      this.$axios.post(this.$httpUrl+'/review/update',this.form).then(res=>res.data).then(res=>{
         console.log(res)
         if(res.code==200){
           this.$message({
@@ -189,7 +189,7 @@ export default {
     },
 
     loadPost(){
-      this.$axios.post(this.$httpUrl+'/storage/listPage',{
+      this.$axios.post(this.$httpUrl+'/review/listPage',{
         pageSize:this.pageSize,
         pageNum:this.pageNum,
         param:{

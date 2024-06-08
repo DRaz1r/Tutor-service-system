@@ -11,8 +11,8 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="Storage对象", description="")
-public class Storage implements Serializable {
+@ApiModel(value="Review对象", description="")
+public class Review implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

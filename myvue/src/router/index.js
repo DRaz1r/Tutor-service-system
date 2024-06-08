@@ -5,7 +5,7 @@ import login from "../views/Login";
 import Home from "../views/Home";
 import AdminManage from "../views/admin/AdminManage";
 import UserManage from "../views/user/UserManage";
-import StorageManage from "../views/storage/StorageManage";
+import ReviewManage from "../views/review/ReviewManage";
 import InfoPublishManage from "../views/infopublish/InfoPublishManage";
 import DemandPublishManage from "../views/demandpublish/DemandPublishManage.vue";
 import Register from '../views/Register.vue';
@@ -66,10 +66,10 @@ export default new VueRouter({
           }
         },
         {
-          path: '/Storage',
-          component: StorageManage,
+          path: '/Review',
+          component: ReviewManage,
           meta: {
-            title: '仓库管理'
+            title: '评价反馈'
           }
         }
       ]
