@@ -65,18 +65,18 @@ public class DemandPublishController {
     @PostMapping("/listPage")
     public Result listPc(@RequestBody QueryPageParam query){
         HashMap param = query.getParam();
-        String subjects =(String) param.get("subjects");
-        String grades =(String) param.get("grades");
+        String subject =(String) param.get("subject");
+        String grade =(String) param.get("grade");
         Page<DemandPublish> userPage = new Page<>();
         userPage.setCurrent(query.getPageNum());
         userPage.setSize(query.getPageSize());
 
         LambdaQueryWrapper<DemandPublish> LambdaQueryWrapper = new LambdaQueryWrapper<>();
-        if(!StringUtils.isNullOrEmpty(subjects)&&!"null".equals(subjects)){
-            LambdaQueryWrapper.eq(DemandPublish::getSubjects,subjects);
+        if(!StringUtils.isNullOrEmpty(subject)&&!"null".equals(subject)){
+            LambdaQueryWrapper.eq(DemandPublish::getSubjects,subject);
         }
-        if(!StringUtils.isNullOrEmpty(grades)&&!"null".equals(grades)){
-            LambdaQueryWrapper.eq(DemandPublish::getGrades,grades);
+        if(!StringUtils.isNullOrEmpty(grade)&&!"null".equals(grade)){
+            LambdaQueryWrapper.eq(DemandPublish::getGrades,grade);
         }
 
         Page<DemandPublish> page = demandPublishService.page(userPage, LambdaQueryWrapper);

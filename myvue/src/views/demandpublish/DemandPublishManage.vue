@@ -8,7 +8,7 @@
           v-for="item in subjects"
           :key="item.value"
           :label="item.label"
-          :value="item.value">
+          :value="item.label">
         </el-option>
       </el-select>
 
@@ -16,30 +16,27 @@
       <el-button type="success" style="margin-left: 5px" @click="resetParam">重置</el-button>
       <el-button type="primary" style="margin-left: 5px" @click="add">新增</el-button>
     </div>
-    <el-table :data="tableData"
-              :header-cell-style="{background:'#f3f3fd',color:'#555'}"
-              border
-              highlight-current-row
-              @current-change="selectCurrentChange">
-      <el-table-column prop="id" label="ID" width="80px"></el-table-column>
-      <el-table-column prop="userId" label="用户ID" width="100px"></el-table-column>
-      <el-table-column prop="subjects" label="科目" width="100px"></el-table-column>
-      <el-table-column prop="grades" label="年级" width="100px"></el-table-column>
-      <el-table-column prop="availableTimes" label="时间" width="100px"></el-table-column>
-      <el-table-column prop="requirement" label="家教需求"></el-table-column>
-<!--      <el-table-column prop="introduction" label="个人简介"></el-table-column>-->
-      <el-table-column prop="operate" label="操作" width="150px">
-        <template slot-scope="scope">
-          <el-button size="small" type="success" @click="mod(scope.row)">编辑</el-button>
-          <el-popconfirm
-            title="确定删除吗？"
-            @confirm="del(scope.row.id)"
-            style="margin-left: 5px;">
-            <el-button slot="reference" size="small" type="danger">删除</el-button>
-          </el-popconfirm>
-        </template>
-      </el-table-column>
-    </el-table>
+    <div class="grid-container">
+      <div v-for="item in tableData" :key="item.id" class="grid-item">
+        <div class="item-content">
+          <div class="user-id">{{ item.userId }}</div>
+          <div class="tags">
+            <span class="tag">{{ item.subjects }}</span>
+            <span class="tag">{{ item.grades }}</span>
+            <span class="tag">{{ item.availableTimes }}</span>
+          </div>
+          <div class="requirement">{{ item.requirement }}</div>
+          <div class="buttons">
+            <el-button size="small" type="success" @click="mod(item)">编辑</el-button>
+            <el-popconfirm
+              title="确定删除吗？"
+              @confirm="del(item.id)">
+              <el-button slot="reference" size="small" type="danger">删除</el-button>
+            </el-popconfirm>
+          </div>
+        </div>
+      </div>
+    </div>
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -220,8 +217,7 @@ export default {
         pageSize:this.pageSize,
         pageNum:this.pageNum,
         param:{
-          //   goodstype: this.goodstype+'',
-          //   storage: this.storage+''
+            subject: this.subject,
         }
       }).then(res=>res.data).then(res=>{
         console.log(res)
@@ -254,4 +250,50 @@ export default {
 </script>
 
 <style scoped>
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 控制列数和每列最小/最大宽度 */
+  gap: 20px; /* 设置块之间的间隙 */
+}
+
+.grid-item {
+  background-color: #fff; /* 设置块的背景色 */
+  border: 1px solid #ccc; /* 设置块的边框 */
+  border-radius: 5px; /* 设置块的圆角 */
+  padding: 20px; /* 设置块的内边距 */
+}
+
+.item-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-id {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.tags {
+  margin-bottom: 10px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #f3f3fd;
+  color: #555;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.requirement {
+  margin-bottom: 10px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
 </style>
