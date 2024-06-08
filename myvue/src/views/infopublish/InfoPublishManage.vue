@@ -3,11 +3,7 @@
     <div style="margin-bottom: 5px">
       <el-input v-model="userId" placeholder="请输入用户ID  " suffix-icon="el-icon-search" style="width: 136px"
                 @keyup.enter.native="loadPost"></el-input>
-<!--      <el-select v-model="type" placeholder="请选择类型" style="margin-left: 5px;width: 120px">-->
-<!--        <el-option label="teacher" value="teacher"></el-option>-->
-<!--        <el-option label="student" value="student"></el-option>-->
-<!--      </el-select>-->
-      <el-select v-model="info_publish" filterable placeholder="请选择科目" style="margin-left: 5px">
+      <el-select v-model="subject" filterable placeholder="请选择科目" style="margin-left: 5px;">
         <el-option
           v-for="item in subjects"
           :key="item.value"
@@ -65,14 +61,6 @@
             <el-input v-model="form.userId"></el-input>
           </el-col>
         </el-form-item>
-<!--        <el-form-item label="类型" prop="type">-->
-<!--          <el-col :span="20">-->
-<!--            <el-select v-model="form.type" placeholder="请选择类型">-->
-<!--              <el-option label="teacher" value="teacher"></el-option>-->
-<!--              <el-option label="student" value="student"></el-option>-->
-<!--            </el-select>-->
-<!--          </el-col>-->
-<!--        </el-form-item>-->
         <el-form-item label="科目" prop="subjects">
           <el-col :span="20">
             <el-input v-model="form.subjects"></el-input>
@@ -115,6 +103,7 @@ export default {
       pageSize: 5,
       pageNum: 1,
       total: 0,
+      subject:'',
       userId: '',
       type: '',
       dialogVisible: false,
@@ -232,8 +221,7 @@ export default {
         pageSize:this.pageSize,
         pageNum:this.pageNum,
         param:{
-        //   goodstype: this.goodstype+'',
-        //   storage: this.storage+''
+            subjects: this.subjects+'',
         }
       }).then(res=>res.data).then(res=>{
         console.log(res)

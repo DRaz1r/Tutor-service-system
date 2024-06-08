@@ -1,11 +1,15 @@
 <template>
   <div>
     <div style="margin-bottom: 5px">
-      <el-input v-model="userId" placeholder="请输入用户ID" suffix-icon="el-icon-search" style="width: 120px"
+      <el-input v-model="userId" placeholder="请输入用户ID  " suffix-icon="el-icon-search" style="width: 136px"
                 @keyup.enter.native="loadPost"></el-input>
-      <el-select v-model="type" placeholder="请选择类型" style="margin-left: 5px;width: 120px">
-        <el-option label="teacher" value="teacher"></el-option>
-        <el-option label="student" value="student"></el-option>
+      <el-select v-model="subject" filterable placeholder="请选择科目" style="margin-left: 5px;">
+        <el-option
+          v-for="item in subjects"
+          :key="item.value"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
       </el-select>
 
       <el-button type="primary" style="margin-left: 5px" @click="loadPost">查询</el-button>
@@ -19,7 +23,6 @@
               @current-change="selectCurrentChange">
       <el-table-column prop="id" label="ID" width="80px"></el-table-column>
       <el-table-column prop="userId" label="用户ID" width="100px"></el-table-column>
-      <!--      <el-table-column prop="type" label="类型" width="100px"></el-table-column>-->
       <el-table-column prop="subjects" label="科目" width="100px"></el-table-column>
       <el-table-column prop="grades" label="年级" width="100px"></el-table-column>
       <el-table-column prop="availableTimes" label="时间" width="100px"></el-table-column>
@@ -57,14 +60,6 @@
             <el-input v-model="form.userId"></el-input>
           </el-col>
         </el-form-item>
-<!--        <el-form-item label="类型" prop="type">-->
-<!--          <el-col :span="20">-->
-<!--            <el-select v-model="form.type" placeholder="请选择类型">-->
-<!--              <el-option label="teacher" value="teacher"></el-option>-->
-<!--              <el-option label="student" value="student"></el-option>-->
-<!--            </el-select>-->
-<!--          </el-col>-->
-<!--        </el-form-item>-->
         <el-form-item label="科目" prop="subjects">
           <el-col :span="20">
             <el-input v-model="form.subjects"></el-input>
@@ -110,6 +105,19 @@ export default {
       userId: '',
       type: '',
       dialogVisible: false,
+      subject:'',
+      subjects:[
+        {
+          value: '2',
+          label: '语文'
+        }, {
+          value: '1',
+          label: '数学'
+        }, {
+          value: '0',
+          label: '英语'
+        }
+      ],
       form: {
         id: '',
         userId: '',
@@ -125,7 +133,7 @@ export default {
           { required: true, message: '请输入用户ID', trigger: 'blur' },
         ],
         type: [
-          { required: true, message: '请选择类型', trigger: 'blur' },
+          { required: true, message: '请选择科目', trigger: 'blur' },
         ]
       }
     };
