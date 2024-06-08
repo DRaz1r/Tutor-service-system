@@ -4,7 +4,7 @@
       <i :class="icon" style="font-size: 15px;" @click="collapse"></i>
     </div>
     <div style="flex: 1;text-align: center;font-size: 30px">
-      <span>欢迎来到仓库管理系统</span>
+      <span>家教服务系统——HIT软工项目</span>
     </div>
     <el-dropdown>
       <i class="el-icon-arrow-down" style="margin-left: 5px;"></i>

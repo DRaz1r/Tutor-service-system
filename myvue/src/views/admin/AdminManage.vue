@@ -38,7 +38,7 @@
         <template slot-scope="scope">
           <el-tag
             :type="scope.row.roleId === 0? 'danger' : (scope.row.roleId === 1? 'primary' : 'success')"
-            disable-transitions>{{scope.row.roleId === 0? '超级管理员' : (scope.row.roleId === 1? '管理员' : '用户')}}</el-tag>
+            disable-transitions>{{scope.row.roleId === 0? '超级管理员' : (scope.row.roleId === 1? '教师' : '用户')}}</el-tag>
         </template>
       </el-table-column>
       <el-table-column prop="phone" label="电话" width="120">

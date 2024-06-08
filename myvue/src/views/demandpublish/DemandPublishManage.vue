@@ -19,12 +19,12 @@
               @current-change="selectCurrentChange">
       <el-table-column prop="id" label="ID" width="80px"></el-table-column>
       <el-table-column prop="userId" label="用户ID" width="100px"></el-table-column>
-<!--      <el-table-column prop="type" label="类型" width="100px"></el-table-column>-->
+      <!--      <el-table-column prop="type" label="类型" width="100px"></el-table-column>-->
       <el-table-column prop="subjects" label="科目" width="100px"></el-table-column>
       <el-table-column prop="grades" label="年级" width="100px"></el-table-column>
       <el-table-column prop="availableTimes" label="时间" width="100px"></el-table-column>
-<!--      <el-table-column prop="requirement" label="家教需求"></el-table-column>-->
-      <el-table-column prop="introduction" label="个人简介"></el-table-column>
+      <el-table-column prop="requirement" label="家教需求"></el-table-column>
+<!--      <el-table-column prop="introduction" label="个人简介"></el-table-column>-->
       <el-table-column prop="operate" label="操作" width="150px">
         <template slot-scope="scope">
           <el-button size="small" type="success" @click="mod(scope.row)">编辑</el-button>
@@ -57,14 +57,14 @@
             <el-input v-model="form.userId"></el-input>
           </el-col>
         </el-form-item>
-<!--        <el-form-item label="类型" prop="type">-->
-<!--          <el-col :span="20">-->
-<!--            <el-select v-model="form.type" placeholder="请选择类型">-->
-<!--              <el-option label="teacher" value="teacher"></el-option>-->
-<!--              <el-option label="student" value="student"></el-option>-->
-<!--            </el-select>-->
-<!--          </el-col>-->
-<!--        </el-form-item>-->
+        <el-form-item label="类型" prop="type">
+          <el-col :span="20">
+            <el-select v-model="form.type" placeholder="请选择类型">
+              <el-option label="teacher" value="teacher"></el-option>
+              <el-option label="student" value="student"></el-option>
+            </el-select>
+          </el-col>
+        </el-form-item>
         <el-form-item label="科目" prop="subjects">
           <el-col :span="20">
             <el-input v-model="form.subjects"></el-input>
@@ -80,11 +80,11 @@
             <el-input v-model="form.availableTimes"></el-input>
           </el-col>
         </el-form-item>
-<!--        <el-form-item label="家教需求" prop="requirement">-->
-<!--          <el-col :span="20">-->
-<!--            <el-input type="textarea" v-model="form.requirement"></el-input>-->
-<!--          </el-col>-->
-<!--        </el-form-item>-->
+        <el-form-item label="家教需求" prop="requirement">
+          <el-col :span="20">
+            <el-input type="textarea" v-model="form.requirement"></el-input>
+          </el-col>
+        </el-form-item>
         <el-form-item label="个人简介" prop="introduction">
           <el-col :span="20">
             <el-input type="textarea" v-model="form.introduction"></el-input>
@@ -188,7 +188,7 @@ export default {
       })
     },
     doMod() {
-     this.$axios.post(this.$httpUrl+'/infopublish/update',this.form).then(res=>res.data).then(res=>{
+      this.$axios.post(this.$httpUrl+'/infopublish/update',this.form).then(res=>res.data).then(res=>{
         console.log(res)
         if(res.code==200){
           this.$message({
@@ -212,8 +212,8 @@ export default {
         pageSize:this.pageSize,
         pageNum:this.pageNum,
         param:{
-        //   goodstype: this.goodstype+'',
-        //   storage: this.storage+''
+          //   goodstype: this.goodstype+'',
+          //   storage: this.storage+''
         }
       }).then(res=>res.data).then(res=>{
         console.log(res)

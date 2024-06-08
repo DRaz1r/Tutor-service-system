@@ -57,11 +57,11 @@ DROP TABLE IF EXISTS `info_publish`;
 CREATE TABLE `info_publish`  (
   `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
   `user_id` int NOT NULL COMMENT '用户ID，关联用户ID',
-  `type` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '类型，teacher/student',
+--   `type` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '类型，teacher/student',
   `subjects` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '科目',
   `grades` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '年级',
   `available_times` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '时间',
-  `requirement` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '家教需求，针对学生',
+--   `requirement` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '家教需求，针对学生',
   `introduction` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '个人简介或其他信息',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id` ASC) USING BTREE,
@@ -71,7 +71,7 @@ CREATE TABLE `info_publish`  (
 -- ----------------------------
 -- Records of info_publish
 -- ----------------------------
-INSERT INTO `info_publish` VALUES (1, 2, '1', '数学', '高一', '周三', NULL, '有责任心，从教5年');
+INSERT INTO `info_publish` VALUES (1, 2, '数学', '高一', '周三', '有责任心，从教5年。');
 
 -- ----------------------------
 -- Table structure for menu
@@ -176,7 +176,19 @@ CREATE TABLE `user`  (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES (1, 'admin', '超级管理员', '123456', 18, 1, '111', 0, 'Y');
+INSERT INTO `user` VALUES (1, 'admin', '教学管理员', '123', 18, 1, '15946284922', 0, 'Y');
 INSERT INTO `user` VALUES (2, 'zhangsan', '张三', '123456', 22, 1, '15529782988', 1, 'Y');
+INSERT INTO `user` VALUES (3, 'user1', '章三', 'password1', 25, 1, '13800138000', 1, 'Y');
+INSERT INTO `user` VALUES (4, 'user2', '李四', 'password2', 30, 0, '13900139000', 2, 'Y');
+INSERT INTO `user` VALUES (5, 'user3', '王五', 'password3', 22, 1, '13700137000', 1, 'Y');
+INSERT INTO `user` VALUES (6, 'user4', '赵六', 'password4', 35, 0, '13600136000', 1, 'Y');
+INSERT INTO `user` VALUES (7, 'user5', '孙七', 'password5', 28, 1, '13500135000', 2, 'Y');
+INSERT INTO `user` VALUES (8, 'user6', '周八', 'password6', 29, 0, '13400134000', 2, 'Y');
+INSERT INTO `user` VALUES (9, 'user7', '吴九', 'password7', 33, 1, '13300133000', 1, 'Y');
+INSERT INTO `user` VALUES (10, 'user8', '郑十', 'password8', 24, 0, '13200132000', 2, 'Y');
+INSERT INTO `user` VALUES (11, 'user9', '陈十一', 'password9', 31, 1, '13100131000', 2, 'Y');
+INSERT INTO `user` VALUES (12, 'user10', '钱十二', 'password10', 27, 0, '13000130000', 2, 'Y');
+
+
 
 SET FOREIGN_KEY_CHECKS = 1;

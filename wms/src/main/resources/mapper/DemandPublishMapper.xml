@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.vms.mapper.InfoPublishMapper">
+<mapper namespace="com.vms.mapper.DemandPublishMapper">
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.vms.entity.InfoPublish">
@@ -16,7 +16,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, user_id, subjects, grades, available_times, introduction
+        id, user_id, subjects, grades, available_times, requirement
     </sql>
 
 </mapper>

@@ -38,8 +38,23 @@
         </el-descriptions>
 
         <DateUtils></DateUtils>
+      <img src="@/assets/images/hit.png" alt="图片描述" class="background-image">
+
     </div>
+
+
 </template>
+
+<style>
+.background-image {
+  position: absolute; /* 使用绝对定位，使图片可以放置在容器的任何位置 */
+  top: 0;
+  left: 0;
+  width: 100%; /* 图片宽度设置为容器的宽度 */
+  height: auto; /* 图片高度根据宽度自动调整 */
+  z-index: -1; /* 设置z-index为-1，使图片置于底层 */
+}
+</style>
 
 <script>
     import DateUtils from "./DateUtils";
@@ -69,7 +84,6 @@
 <style scoped>
     .el-descriptions{
         width:90%;
-
         margin: 0 auto;
         text-align: center;
     }
