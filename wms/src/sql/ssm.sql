@@ -11,7 +11,7 @@
  Target Server Version : 80037 (8.0.37)
  File Encoding         : 65001
 
- Date: 08/06/2024 12:38:46
+ Date: 08/06/2024 13:35:08
 */
 
 SET NAMES utf8mb4;
@@ -36,6 +36,7 @@ CREATE TABLE `demand_publish`  (
 -- ----------------------------
 -- Records of demand_publish
 -- ----------------------------
+INSERT INTO `demand_publish` VALUES (1, 11, '语文', '高一', '周天', '强化古诗词');
 
 -- ----------------------------
 -- Table structure for goods
@@ -84,51 +85,16 @@ CREATE TABLE `info_publish`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id` ASC) USING BTREE,
   CONSTRAINT `info_publish_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of info_publish
 -- ----------------------------
-INSERT INTO `info_publish` VALUES (1, 2, '数学', '高中', '上午', '有责任心，从教5年。');
-INSERT INTO `info_publish` VALUES (2, 3, '语文', '初中', '上午', '有耐心，从教3年。');
-INSERT INTO `info_publish` VALUES (3, 5, '英语', '高中', '晚上', '擅长口语，从教7年。');
-INSERT INTO `info_publish` VALUES (4, 6, '语文', '高中', '下午', '有实验经验，从教6年。');
-INSERT INTO `info_publish` VALUES (5, 9, '语文', '高中', '下午', '有实验室经验，从教4年。');
--- INSERT INTO `info_publish` VALUES (6, 7, '生物', '高中', '晚上', '有实验室经验，从教3年。');
--- INSERT INTO `info_publish` VALUES (7, 8, '历史', '初中', '下午', '有教学经验，从教5年。');
--- INSERT INTO `info_publish` VALUES (8, 9, '地理', '高中', '下午', '有教学经验，从教6年。');
--- INSERT INTO `info_publish` VALUES (9, 10, '政治', '高中', '晚上', '有教学经验，从教7年。');
--- INSERT INTO `info_publish` VALUES (10, 11, '体育', '初中', '下午', '有教学经验，从教4年。');
--- INSERT INTO `info_publish` VALUES (11, 12, '美术', '高中', '晚上', '有教学经验，从教3年。');
-
-
--- ----------------------------
--- Table structure for demand_publish
--- ----------------------------
-DROP TABLE IF EXISTS `demand_publish`;
-CREATE TABLE `demand_publish`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `user_id` int NOT NULL COMMENT '用户ID，关联用户ID',
-  `subjects` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '科目',
-  `grades` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '年级',
-  `available_times` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '时间',
-  `requirement` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '家教需求，针对学生',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  CONSTRAINT `demand_publish_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of demand_publish
--- ----------------------------
-INSERT INTO `demand_publish` VALUES (1, 4, '数学', '高中', '周末', '想找一个负责任的老师');
-INSERT INTO `demand_publish` VALUES (2, 7, '语文', '高中', '周末', '想找一个男老师');
-INSERT INTO `demand_publish` VALUES (3, 8, '语文', '高中', '周末', '想找一个女老师');
-INSERT INTO `demand_publish` VALUES (4, 10, '英语', '高中', '周末', '想找一个有留学经历老师');
-INSERT INTO `demand_publish` VALUES (5, 11, '数学', '高中', '工作日', '想找一个年轻老师');
-INSERT INTO `demand_publish` VALUES (6, 12, '数学', '高中', '工作日', '想找一个教学经验丰富的老师');
-
-
+INSERT INTO `info_publish` VALUES (1, 2, '数学', '高一', '周三', '有责任心，从教5年。');
+INSERT INTO `info_publish` VALUES (2, 2, '数学', '高二', '周六', '有责任心，从教5年。');
+INSERT INTO `info_publish` VALUES (3, 3, '语文', '高三', '周五', '语文教学能手');
+INSERT INTO `info_publish` VALUES (4, 5, '英语', '高三', '周五', '英语教学能手');
+INSERT INTO `info_publish` VALUES (5, 6, '生物', '高三', '周六', '高中生物速成');
 
 -- ----------------------------
 -- Table structure for menu
@@ -207,14 +173,13 @@ CREATE TABLE `storage`  (
   `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '评价人',
   `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '评价内容',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of storage
 -- ----------------------------
 INSERT INTO `storage` VALUES (1, 'why', '系统简洁易用，赞！');
 INSERT INTO `storage` VALUES (2, '张三', '太棒了！');
-
 
 -- ----------------------------
 -- Table structure for user
