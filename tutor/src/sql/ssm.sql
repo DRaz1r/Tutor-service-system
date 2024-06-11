@@ -87,12 +87,11 @@ CREATE TABLE `menu`  (
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES (1, '001', '教师管理', '1', NULL, 'Admin', '0', 'admin/AdminManage.vue', 'el-icon-s-custom');
-INSERT INTO `menu` VALUES (2, '002', '学生管理', '1', NULL, 'User', '0,1', 'user/UserManage.vue', 'el-icon-user-solid');
-INSERT INTO `menu` VALUES (3, '003', '教师信息', '1', NULL, 'Review', '0,1', 'review/StorageManage', 'el-icon-office-building');
-INSERT INTO `menu` VALUES (4, '004', '学生信息', '1', NULL, 'Goodstype', '0,1', 'goodstype/GoodstypeManage', 'el-icon-menu');
-INSERT INTO `menu` VALUES (5, '005', '评价信息 ', '1', NULL, 'Goods', '0,1,2', 'goods/GoodsManage', 'el-icon-s-management');
-INSERT INTO `menu` VALUES (6, '006', '系统主页', '1', NULL, 'Record', '0,1,2', 'record/RecordManage', 'el-icon-s-order');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (1, '001', '教师管理', '1', null, 'Admin', '0', 'AdminManage', 'el-icon-s-custom');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (2, '002', '学生管理', '1', null, 'User', '0', 'UserManage', 'el-icon-user-solid');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (3, '003', '家教信息', '1', null, 'InfoPublish', '0,1,2', 'InfoPublishManage', 'el-icon-takeaway-box');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (4, '004', '学生信息', '1', null, 'DemandPublish', '0,1,2', 'DemandPublishManage', 'el-icon-takeaway-box');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (5, '005', '评价反馈', '1', null, 'Review', '0,1,2', 'ReviewManage', 'el-icon-office-building');
 
 -- ----------------------------
 -- Table structure for review

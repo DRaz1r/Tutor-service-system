@@ -13,48 +13,27 @@
      <i class="el-icon-s-home"></i>
      <span slot="title">首页</span>
    </el-menu-item>
-    <el-menu-item :index="'/'+item.menuClick" v-for="(item,i) in menu" :key="i" >
-      <i :class="item.menuIcon"></i>
-      <span slot="title">{{item.menuName}}</span>
+    <el-menu-item :index="'/'+item.menuclick" v-for="(item,i) in getMenu" :key="i" >
+      <i :class="item.menuicon"></i>
+      <span slot="title">{{item.menuname}}</span>
     </el-menu-item>
   </el-menu>
 </template>
 
 <script>
+import { mapGetters } from "vuex"
 export default {
   name: "Aside",
   data(){
     return{
-      menu:[
-        {
-          menuClick:'Admin',
-          menuName:'教师管理',
-          menuIcon:'el-icon-s-custom'
-        },
-        {
-          menuClick:'User',
-          menuName:'学生管理',
-          menuIcon:'el-icon-user-solid'
-        },
-        {
-          menuClick:'InfoPublish',
-          menuName:'家教信息',
-          menuIcon:'el-icon-takeaway-box'
-        },
-        {
-          menuClick:'DemandPublish',
-          menuName:'学生信息',
-          menuIcon:'el-icon-takeaway-box'
-        },
-        {
-          menuClick:'Review',//终于找到你
-          menuName:'评价反馈',
-          menuIcon:'el-icon-office-building'
-        }
-      ]
     }
   },
-
+  created: {
+    ...mapGetters(["getMenu"])
+  },
+  computed: {
+    ...mapGetters(["getMenu"])
+  },
   props:{
     isCollapse:Boolean
   }

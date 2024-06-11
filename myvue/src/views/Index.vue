@@ -1,6 +1,7 @@
 <template>
   <el-container style="height: 100%; border: 1px solid #eee">
     <el-aside :width="aside_witdh" style="background-color: rgb(238, 241, 246);margin-left: -1px;margin-top: -1px">
+      <!-- 引入Aside组件并传递isCollapse属性 -->
       <Aside :isCollapse="isCollapse"></Aside>
     </el-aside>
 

@@ -57,7 +57,7 @@ public class UserController {
             List<Menu> list = menuService.lambdaQuery().like(Menu::getMenuright, user1.getRoleId()).list();
             HashMap<Object, Object> objectObjectHashMap = new HashMap<>();
             objectObjectHashMap.put("user",user1);
-            objectObjectHashMap.put("list",list);
+            objectObjectHashMap.put("menu",list);
             return Result.success(objectObjectHashMap,objectObjectHashMap.size());
         }
         return Result.fail();
