@@ -6,6 +6,7 @@ import router from './router'//自动扫描里面的路由配置
 import VueRouter from "vue-router";
 import store from "./store";
 import ElementUI from 'element-ui';
+import 'animate.css'
 import 'element-ui/lib/theme-chalk/index.css';
 import './assets/global.css';
 import axios from "axios";

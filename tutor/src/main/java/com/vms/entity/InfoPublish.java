@@ -37,8 +37,14 @@ public class InfoPublish implements Serializable {
     @ApiModelProperty(value = "年级")
     private String grades;
 
-    @ApiModelProperty(value = "时间")
-    private String availableTimes;
+    @ApiModelProperty(value = "标题")
+    private String title;
+
+    @ApiModelProperty(value = "日期")
+    private String days;
+
+    @ApiModelProperty(value = "时间段")
+    private String periods;
 
     @ApiModelProperty(value = "个人简介或其他信息")
     private String introduction;

@@ -45,27 +45,28 @@ INSERT INTO `demand_publish` VALUES (3, 7, '英语', '高三', '周二', '要求
 -- ----------------------------
 DROP TABLE IF EXISTS `info_publish`;
 CREATE TABLE `info_publish`  (
-  `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `user_id` int NOT NULL COMMENT '用户ID，关联用户ID',
-  `subjects` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '科目',
-  `grades` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '年级',
-  `available_times` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '时间',
-  `introduction` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '个人简介或其他信息',
-  `image_url` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '图片url',
-  PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id`(`user_id` ASC) USING BTREE,
-  CONSTRAINT `info_publish_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+    `id` int NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `user_id` int NOT NULL COMMENT '用户ID，关联用户ID',
+    `subjects` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '科目',
+    `grades` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '年级',
+    `title` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '标题',
+    `days` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '星期几',
+    `periods` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '时间段',
+    `introduction` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '个人简介或其他信息',
+    `image_url` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '图片url',
+    PRIMARY KEY (`id`) USING BTREE,
+    INDEX `user_id`(`user_id` ASC) USING BTREE,
+    CONSTRAINT `info_publish_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
-
 -- ----------------------------
 -- Records of info_publish
 -- ----------------------------
-INSERT INTO `info_publish` VALUES (1, 2, '数学', '高一', '周三', '有责任心，从教5年。', '/uploads/1717848365924_OIP.jpg');
-INSERT INTO `info_publish` VALUES (2, 2, '数学', '高二', '周六', '有责任心，从教5年。', '/uploads/1717848365924_OIP.jpg');
-INSERT INTO `info_publish` VALUES (3, 3, '语文', '高三', '周五', '语文教学能手', '/uploads/1717848365924_OIP.jpg');
-INSERT INTO `info_publish` VALUES (4, 5, '英语', '高三', '周五', '英语教学能手', '/uploads/1717848365924_OIP.jpg');
-INSERT INTO `info_publish` VALUES (5, 6, '生物', '高三', '周六', '高中生物速成', '/uploads/1717848365924_OIP.jpg');
-INSERT INTO `info_publish` VALUES (6, 6, '英语', '大一', '周天', '四六级稳过', '/uploads/1717850337110_OIP (1).jpg');
+INSERT INTO `info_publish` (`id`, `user_id`, `subjects`, `grades`, `title`, `introduction`, `image_url`, `days`, `periods`) VALUES
+(1, 2, '数学', '高一', '高一数学', '有责任心，从教5年。', '/uploads/1717848365924_OIP.jpg', '星期一,星期三,星期五', '上午'),
+(2, 2, '数学', '高二', '高二数学', '有责任心，从教5年。', '/uploads/1717848365924_OIP.jpg', '星期二,星期四,星期六', '上午'),
+(3, 3, '语文', '高三', '高三语文', '语文教学能手', '/uploads/1717848365924_OIP.jpg', '星期一,星期三', '下午'),
+(4, 5, '英语', '高三', '高三英语', '英语教学能手', '/uploads/1717848365924_OIP.jpg', '星期二,星期四', '下午'),
+(5, 6, '生物', '高三', '高三生物', '高中生物速成', '/uploads/1717848365924_OIP.jpg', '星期三,星期五', '晚上');
 
 -- ----------------------------
 -- Table structure for menu
@@ -87,12 +88,11 @@ CREATE TABLE `menu`  (
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES (1, '001', '教师管理', '1', NULL, 'Admin', '0', 'admin/AdminManage.vue', 'el-icon-s-custom');
-INSERT INTO `menu` VALUES (2, '002', '学生管理', '1', NULL, 'User', '0,1', 'user/UserManage.vue', 'el-icon-user-solid');
-INSERT INTO `menu` VALUES (3, '003', '教师信息', '1', NULL, 'Review', '0,1', 'review/StorageManage', 'el-icon-office-building');
-INSERT INTO `menu` VALUES (4, '004', '学生信息', '1', NULL, 'Goodstype', '0,1', 'goodstype/GoodstypeManage', 'el-icon-menu');
-INSERT INTO `menu` VALUES (5, '005', '评价信息 ', '1', NULL, 'Goods', '0,1,2', 'goods/GoodsManage', 'el-icon-s-management');
-INSERT INTO `menu` VALUES (6, '006', '系统主页', '1', NULL, 'Record', '0,1,2', 'record/RecordManage', 'el-icon-s-order');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (1, '001', '教师管理', '1', null, 'Admin', '0', 'AdminManage', 'el-icon-s-custom');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (2, '002', '学生管理', '1', null, 'User', '0', 'UserManage', 'el-icon-user-solid');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (3, '003', '家教信息', '1', null, 'InfoPublish', '0,1,2', 'InfoPublishManage', 'el-icon-takeaway-box');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (4, '004', '学生信息', '1', null, 'DemandPublish', '0,1,2', 'DemandPublishManage', 'el-icon-takeaway-box');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (5, '005', '评价反馈', '1', null, 'Review', '0,1,2', 'ReviewManage', 'el-icon-office-building');
 
 -- ----------------------------
 -- Table structure for review
