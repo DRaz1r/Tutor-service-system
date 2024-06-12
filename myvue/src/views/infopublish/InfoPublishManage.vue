@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <div style="margin-bottom: 5px">
       <el-input v-model="userId" placeholder="请输入用户ID  " suffix-icon="el-icon-search" style="width: 136px"
                 @keyup.enter.native="loadPost"></el-input>
@@ -16,29 +17,51 @@
       <el-button type="success" style="margin-left: 5px" @click="resetParam">重置</el-button>
       <el-button type="primary" style="margin-left: 5px" @click="add">新增</el-button>
     </div>
+
     <div class="grid-container">
-      <div v-for="item in tableData" :key="item.id" class="grid-item">
-        <div class="item-content">
-          <!-- 用户名固定在左上角 -->
-          <div class="user-name">{{ item.userName + item.title }}</div>
-          <!-- 图片占据整个块的宽度 -->
-          <div class="user-avatar-container">
-            <img class="user-avatar" :src="backendUrl+item.imageUrl" alt="用户头像">
+      <el-row v-for="item in tableData" :key="item.id" class="grid-item animate__animated animate__fadeIn">
+        <el-col :span="24" class="item-content">
+          <!-- 用户信息 -->
+          <div class="user-info">
+            <h3>{{ item.title }}</h3>
+            <span class="user-name">@{{ item.userName }}</span>
           </div>
-    
-          <!-- 标签竖直排列在图片的左侧 -->
-          <div class="tags">
+          
+          <!-- 用户头像 -->
+          <div class="user-avatar-container animate__animated animate__zoomIn">
+            <img class="user-avatar" :src="backendUrl + item.imageUrl" alt="用户头像">
+          </div>
+          
+          <!-- 标签栏 -->
+          <div class="tags animate__animated animate__slideInUp">
             <span class="tag">{{ item.subjects }}</span>
-            <span class="tag">{{ item.grades }}</span>
             <span class="tag">{{ item.days }}</span>
+            <span class="tag">{{ item.grades }}</span>
             <span class="tag">{{ item.periods }}</span>
           </div>
-    
-          <!-- 个人简介显示在图片的下方 -->
-          <div class="introduction">{{ item.introduction }}</div>
-        </div>
-      </div>
+          
+          <!-- 个人简介 -->
+          <div class="introduction">
+            <template v-if="showFullIntroduction[item.id]">
+              {{ item.introduction }}
+              <el-button type="text" @click="toggleIntroduction(item.id)">收起</el-button>
+            </template>
+            <template v-else>
+              {{ item.introduction.substring(0, 100) }}<span v-if="item.introduction.length > 100">...</span>
+              <el-button type="text" @click="toggleIntroduction(item.id)">展开</el-button>
+            </template>
+          </div>
+          
+          <!-- 操作按钮 -->
+          <div class="action-buttons">
+            <el-button v-bind:data-type="'thumbButton'" type="primary" icon="el-icon-thumb" v-on:click="animateBtn">点赞</el-button>
+            <el-button v-bind:data-type="'commentButton'" type="primary" icon="el-icon-chat-dot-round" v-on:click="animateBtn">评论</el-button>
+            <el-button v-bind:data-type="'favoriteButton'" type="primary" icon="el-icon-star-off" v-on:click="animateBtn">收藏</el-button>
+          </div>
+        </el-col>
+      </el-row>
     </div>
+
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -137,6 +160,7 @@ export default {
   data() {
     return {
       tableData: [],
+      showFullIntroduction: {},
       pageSize: 5,
       pageNum: 1,
       total: 0,
@@ -210,6 +234,22 @@ export default {
     };
   },
   methods: {
+    animateBtn(event) {
+      // 获取触发事件的元素
+      const button = event.currentTarget;
+      console.log(`Clicked button type:`, button.dataset.type);
+      button.classList.add('animate__animated', 'animate__bounce');
+      button.addEventListener('animationend', () => {
+        button.classList.remove('animate__animated', 'animate__bounce');
+      }, { once: true }); // 一次性事件监听器，确保在动画结束后只执行一次
+    },
+    toggleIntroduction(id) {
+      if (!this.showFullIntroduction[id]) {
+        this.$set(this.showFullIntroduction, id, true);
+      } else {
+        this.showFullIntroduction[id] = !this.showFullIntroduction[id];
+      }
+    },
     handleUploadSuccess(response, file) {
       this.form.imageUrl = response.data;
     },
@@ -331,56 +371,77 @@ export default {
 
 <style scoped>
 .grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* 网格布局，每行最多容纳三个项目 */
-  gap: 20px; /* 项目之间的间隔 */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .grid-item {
-  background-color: #f9f9f9; /* 网格项目背景色 */
-  padding: 10px; /* 网格项目内边距 */
+  flex: 1 1 calc(33.333% - 20px);
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
 }
 
 .item-content {
-  position: relative; /* 项目内容相对定位 */
-  padding: auto;
+  padding: 20px;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .user-name {
-  position: absolute; /* 用户名绝对定位，固定在左上角 */
-  top: 10px;
-  left: 10px;
-  margin-bottom: 20px;
-  background-color:burlywood;
+  color: #888;
+  font-size: 14px;
 }
 
 .user-avatar-container {
-  margin-bottom: 10px; /* 图片容器底部留白 */
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 .user-avatar {
-  width: 100%; /* 图片占据整个容器宽度 */
-  height: auto; /* 高度自动调整 */
+  width: 95%;
+  border-radius: 10%;
+  object-fit: cover;
+  border: 2px solid #eaeaea;
 }
 
 .tags {
-  position: absolute; /* 标签绝对定位，相对于图片的左侧 */
-  top: 10px;
-  left: 10px;
   display: flex;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  flex-direction: column; /* 标签竖直排列 */
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 .tag {
-  margin-bottom: 10px; /* 标签之间的垂直间距 */
-  margin-top: 10px;
-  background-color:aqua;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  padding: 6px 12px;
+  font-size: 12px;
+  color: #666;
 }
 
 .introduction {
-  margin-top: 10px; /* 个人简介与图片底部的垂直间距 */
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: flex-end; /* 将按钮靠右对齐 */
+  margin-top: 10px;
+}
+
+.el-button {
+  margin: 0 5px;
 }
 
 </style>
