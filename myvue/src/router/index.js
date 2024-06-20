@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import Index from "../views/Index";
 import login from "../views/Login";
 import Home from "../views/Home";
-import AdminManage from "../views/admin/AdminManage";
+import TeacherManage from "../views/teacher/TeacherManage.vue";
 import UserManage from "../views/user/UserManage";
 import ReviewManage from "../views/review/ReviewManage";
 import InfoPublishManage from "../views/infopublish/InfoPublishManage";
@@ -38,8 +38,8 @@ export default new VueRouter({
         }
       },
         {
-          path:'/Admin',
-          component:AdminManage,
+          path:'/Teacher',
+          component:TeacherManage,
           meta:{
             title:'教师管理'
           }

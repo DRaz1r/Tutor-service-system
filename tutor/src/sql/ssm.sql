@@ -88,8 +88,8 @@ CREATE TABLE `menu`  (
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (1, '001', '教师管理', '1', null, 'Admin', '0', 'AdminManage', 'el-icon-s-custom');
-INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (2, '002', '学生管理', '1', null, 'User', '0', 'UserManage', 'el-icon-user-solid');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (1, '001', '教师管理', '1', null, 'Teacher', '0', 'TeacherManage', 'el-icon-s-custom');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (2, '002', '学生管理', '1', null, 'User', '0', 'UserManage', 'el-icon-User-solid');
 INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (3, '003', '家教信息', '1', null, 'InfoPublish', '0,1,2', 'InfoPublishManage', 'el-icon-takeaway-box');
 INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (4, '004', '学生信息', '1', null, 'DemandPublish', '0,1,2', 'DemandPublishManage', 'el-icon-takeaway-box');
 INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (5, '005', '评价反馈', '1', null, 'Review', '0,1,2', 'ReviewManage', 'el-icon-office-building');
@@ -112,7 +112,7 @@ INSERT INTO `review` VALUES (1, 'why', '系统简洁易用，赞！');
 INSERT INTO `review` VALUES (2, '张三', '太棒了！');
 
 -- ----------------------------
--- Table structure for user
+-- Table structure for User
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`  (
@@ -129,7 +129,7 @@ CREATE TABLE `user`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
--- Records of user
+-- Records of User
 -- ----------------------------
 INSERT INTO `user` VALUES (1, 'admin', '教学管理员', '123', 18, 1, '15946284922', 0, 'Y');
 INSERT INTO `user` VALUES (2, 'zhangsan', '张三', '123456', 22, 1, '15529782988', 1, 'Y');
