@@ -50,3 +50,5 @@ vue2 springboot 2 mybatis，Axios
 评价反馈界面：
 
 ![评价反馈界面](/myvue/src/assets/images/评价反馈.png)
+
+## 第二轮迭代v2.6.1
