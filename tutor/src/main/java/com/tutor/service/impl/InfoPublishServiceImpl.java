@@ -21,7 +21,7 @@ import java.util.List;
 @Service
 public class InfoPublishServiceImpl extends ServiceImpl<InfoPublishMapper, InfoPublish> implements InfoPublishService {
     public Page<InfoPublish> getInfoPublishWithUsername(Page<InfoPublish> page, LambdaQueryWrapper<InfoPublish> wrapper) {
-        List<InfoPublish> records = this.baseMapper.selectInfoPublishWithUsername(wrapper);
+        List<InfoPublish> records = this.baseMapper.selectInfoPublishWithUsername(page, wrapper);
         page.setRecords(records);
         return page;
     }

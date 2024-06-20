@@ -67,6 +67,7 @@ public class DemandPublishController {
         HashMap param = query.getParam();
         String subject =(String) param.get("subject");
         String grade =(String) param.get("grade");
+
         Page<DemandPublish> userPage = new Page<>();
         userPage.setCurrent(query.getPageNum());
         userPage.setSize(query.getPageSize());
