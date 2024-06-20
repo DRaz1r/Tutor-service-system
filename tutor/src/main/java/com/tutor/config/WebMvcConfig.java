@@ -10,7 +10,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // 获取当前项目根目录
-        String userDir = System.getProperty("User.dir");
+        String userDir = System.getProperty("user.dir");
         // 动态构建相对路径
         String uploadPath = "file:" + userDir + "/src/main/resources/img/";
 

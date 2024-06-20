@@ -25,7 +25,7 @@ public class FileController {
         }
 
         // 获取当前项目根目录
-        String userDir = System.getProperty("User.dir");
+        String userDir = System.getProperty("user.dir");
         // 获取文件名
         String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
         File dest = new File(userDir +'/'+ uploadDir + fileName);

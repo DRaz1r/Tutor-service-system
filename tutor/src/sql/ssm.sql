@@ -89,7 +89,7 @@ CREATE TABLE `menu`  (
 -- Records of menu
 -- ----------------------------
 INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (1, '001', '教师管理', '1', null, 'Teacher', '0', 'TeacherManage', 'el-icon-s-custom');
-INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (2, '002', '学生管理', '1', null, 'User', '0', 'UserManage', 'el-icon-User-solid');
+INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (2, '002', '学生管理', '1', null, 'User', '0', 'UserManage', 'el-icon-user-solid');
 INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (3, '003', '家教信息', '1', null, 'InfoPublish', '0,1,2', 'InfoPublishManage', 'el-icon-takeaway-box');
 INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (4, '004', '学生信息', '1', null, 'DemandPublish', '0,1,2', 'DemandPublishManage', 'el-icon-takeaway-box');
 INSERT INTO ssm.menu (id, menuCode, menuName, menuLevel, menuParentCode, menuClick, menuRight, menuComponent, menuIcon) VALUES (5, '005', '评价反馈', '1', null, 'Review', '0,1,2', 'ReviewManage', 'el-icon-office-building');
