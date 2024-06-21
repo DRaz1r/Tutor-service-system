@@ -1,9 +1,14 @@
 <template>
   <div>
-
     <div style="margin-bottom: 5px">
-      <el-input v-model="userId" placeholder="请输入用户ID  " suffix-icon="el-icon-search" style="width: 136px"
-                @keyup.enter.native="loadPost"></el-input>
+      <el-select v-model="grade" filterable placeholder="请选择年级" style="margin-left: 5px;">
+        <el-option
+          v-for="item in grades"
+          :key="item.value"
+          :label="item.label"
+          :value="item.label">
+        </el-option>
+      </el-select>
       <el-select v-model="subject" filterable placeholder="请选择科目" style="margin-left: 5px;">
         <el-option
           v-for="item in subjects"
@@ -164,7 +169,7 @@ export default {
       pageSize: 5,
       pageNum: 1,
       total: 0,
-      userId:'',
+      grade:'',
       subject:'',
       backendUrl: 'http://localhost:8081',
       dialogVisible: false,
@@ -338,6 +343,7 @@ export default {
         pageNum:this.pageNum,
         param:{
             subject: this.subject+'',
+            grade: this.grade+'',
         }
       }).then(res=>res.data).then(res=>{
         console.log(res)
@@ -359,8 +365,8 @@ export default {
       this.loadPost();
     },
     resetParam() {
-      this.userId = '';
-      this.type = '';
+      this.subject = '';
+      this.grade = '';
     }
   },
   beforeMount() {

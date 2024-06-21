@@ -1,14 +1,19 @@
 <template>
   <div>
     <div style="margin-bottom: 5px">
-      <el-input v-model="userId" placeholder="请输入用户ID  " suffix-icon="el-icon-search" style="width: 136px"
-                @keyup.enter.native="loadPost"></el-input>
+      <el-select v-model="grade" placeholder="请选择年级" style="margin-left: 5px;">
+        <el-option
+          v-for="item in grades"
+          :key="item.value"
+          :label="item.label"
+          :value="item.label">
+        </el-option>
+      </el-select>
       <el-select v-model="subject" filterable placeholder="请选择科目" style="margin-left: 5px;">
         <el-option
           v-for="item in subjects"
           :key="item.value"
           :label="item.label"
-          :value="item.label">
           :value="item.label">
         </el-option>
       </el-select>
@@ -89,9 +94,9 @@ export default {
       pageNum: 1,
       total: 0,
       userId: '',
-      type: '',
       dialogVisible: false,
       subject:'',
+      grade:'',
       subjects:[
         {
           value: '2',
@@ -104,21 +109,33 @@ export default {
           label: '英语'
         }
       ],
+      grades: [
+        { value: '一年级', label: '一年级' },
+        { value: '二年级', label: '二年级' },
+        { value: '三年级', label: '三年级' },
+        { value: '四年级', label: '四年级' },
+        { value: '五年级', label: '五年级' },
+        { value: '六年级', label: '六年级' },
+        { value: '初一', label: '初一' },
+        { value: '初二', label: '初二' },
+        { value: '初三', label: '初三' },
+        { value: '高一', label: '高一' },
+        { value: '高二', label: '高二' },
+        { value: '高三', label: '高三' },
+        { value: '考研', label: '考研' }
+      ],
       form: {
-        id: '',
         userId: '',
-        type: '',
         subjects: '',
         grades: '',
         availableTimes: '',
         requirement: '',
-        introduction: ''
       },
       rules: {
         user_id: [
           { required: true, message: '请输入用户ID', trigger: 'blur' },
         ],
-        type: [
+        subjects: [
           { required: true, message: '请选择科目', trigger: 'blur' },
         ]
       }
@@ -207,6 +224,7 @@ export default {
         pageNum:this.pageNum,
         param:{
             subject: this.subject,
+            grade: this.grade,
         }
       }).then(res=>res.data).then(res=>{
         console.log(res)
@@ -228,8 +246,8 @@ export default {
       this.loadPost();
     },
     resetParam() {
-      this.userId = '';
-      this.type = '';
+      this.subject = '';
+      this.grade = '';
     }
   },
   beforeMount() {

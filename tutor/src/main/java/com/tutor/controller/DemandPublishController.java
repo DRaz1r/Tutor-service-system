@@ -65,8 +65,8 @@ public class DemandPublishController {
     @PostMapping("/listPage")
     public Result listPc(@RequestBody QueryPageParam query){
         HashMap param = query.getParam();
-        String subject =(String) param.get("subject");
-        String grade =(String) param.get("grade");
+        String subject = (String) param.get("subject");
+        String grade = (String) param.get("grade");
 
         Page<DemandPublish> userPage = new Page<>();
         userPage.setCurrent(query.getPageNum());
