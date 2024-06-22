@@ -20,7 +20,7 @@
 
       <el-button type="primary" style="margin-left: 5px" @click="loadPost">查询</el-button>
       <el-button type="success" style="margin-left: 5px" @click="resetParam">重置</el-button>
-      <el-button type="primary" style="margin-left: 5px" @click="add">新增</el-button>
+      <el-button type="warning" style="margin-left: 5px" @click="add">新增</el-button>
     </div>
 
     <div class="grid-container">
@@ -31,12 +31,12 @@
             <h3>{{ item.title }}</h3>
             <span class="user-name">@{{ item.userName }}</span>
           </div>
-          
+
           <!-- 用户头像 -->
           <div class="user-avatar-container animate__animated animate__zoomIn">
             <img class="user-avatar" :src="backendUrl + item.imageUrl" alt="用户头像">
           </div>
-          
+
           <!-- 标签栏 -->
           <div class="tags animate__animated animate__slideInUp">
             <span class="tag">{{ item.subjects }}</span>
@@ -44,7 +44,7 @@
             <span class="tag">{{ item.grades }}</span>
             <span class="tag">{{ item.periods }}</span>
           </div>
-          
+
           <!-- 个人简介 -->
           <div class="introduction">
             <template v-if="showFullIntroduction[item.id]">
@@ -56,7 +56,7 @@
               <el-button type="text" @click="toggleIntroduction(item.id)">展开</el-button>
             </template>
           </div>
-          
+
           <!-- 操作按钮 -->
           <div class="action-buttons">
             <el-button v-bind:data-type="'thumbButton'" type="primary" icon="el-icon-thumb" v-on:click="animateBtn">点赞</el-button>
@@ -191,7 +191,7 @@ export default {
         { value: '英语', label: '英语' },
         { value: '生物', label: '生物' },
         { value: '化学', label: '化学' },
-        { value: '地理', label: '地理' },
+        { value: '物理', label: '物理' },
         { value: '政治', label: '政治' },
         { value: '历史', label: '历史' },
         { value: '地理', label: '地理' }

@@ -20,7 +20,7 @@
 
       <el-button type="primary" style="margin-left: 5px" @click="loadPost">查询</el-button>
       <el-button type="success" style="margin-left: 5px" @click="resetParam">重置</el-button>
-      <el-button type="primary" style="margin-left: 5px" @click="add">新增</el-button>
+      <el-button type="warning" style="margin-left: 5px" @click="add">新增</el-button>
     </div>
     <div class="grid-container">
       <div v-for="item in tableData" :key="item.id" class="grid-item">
@@ -35,27 +35,30 @@
         </div>
       </div>
     </div>
+
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="pageNum"
-      :page-sizes="[2, 5, 7]"
+      :page-sizes="[3, 5, 9]"
       :page-size="pageSize"
       layout="total, sizes, prev, pager, next, jumper"
       :total="total">
     </el-pagination>
-    
+
     <el-dialog
       title="提示"
       :visible.sync="dialogVisible"
       width="30%"
       center>
+
       <el-form ref="form" :rules="rules" :model="form" label-width="70px">
         <el-form-item label="用户ID" prop="userId">
           <el-col :span="20">
             <el-input v-model="form.userId"></el-input>
           </el-col>
         </el-form-item>
+
         <el-form-item label="科目" prop="subjects">
           <el-col :span="20">
             <el-input v-model="form.subjects"></el-input>
@@ -97,18 +100,32 @@ export default {
       dialogVisible: false,
       subject:'',
       grade:'',
-      subjects:[
-        {
-          value: '2',
-          label: '语文'
-        }, {
-          value: '1',
-          label: '数学'
-        }, {
-          value: '0',
-          label: '英语'
-        }
+      // subjects:[
+      //   {
+      //     value: '2',
+      //     label: '语文'
+      //   }, {
+      //     value: '1',
+      //     label: '数学'
+      //   }, {
+      //     value: '0',
+      //     label: '英语'
+      //   }
+      // ],
+
+      // 科目选项
+      subjects: [
+        { value: '语文', label: '语文' },
+        { value: '数学', label: '数学' },
+        { value: '英语', label: '英语' },
+        { value: '生物', label: '生物' },
+        { value: '化学', label: '化学' },
+        { value: '物理', label: '物理' },
+        { value: '政治', label: '政治' },
+        { value: '历史', label: '历史' },
+        { value: '地理', label: '地理' }
       ],
+
       grades: [
         { value: '一年级', label: '一年级' },
         { value: '二年级', label: '二年级' },
@@ -256,11 +273,28 @@ export default {
 };
 </script>
 
+<!--.grid-container {-->
+<!--display: grid;-->
+<!--grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 控制列数和每列最小/最大宽度 */-->
+<!--gap: 20px; /* 设置块之间的间隙 */-->
+<!--}-->
+
+<!--.grid-item {-->
+<!--background-color: #fff; /* 设置块的背景色 */-->
+<!--border: 1px solid #ccc; /* 设置块的边框 */-->
+<!--border-radius: 5px; /* 设置块的圆角 */-->
+<!--padding: 20px; /* 设置块的内边距 */-->
+<!--}-->
+
 <style scoped>
+
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 控制列数和每列最小/最大宽度 */
-  gap: 20px; /* 设置块之间的间隙 */
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); /* 控制列数和每列最小/最大宽度 */
+  gap: 30px; /* 设置块之间的间隙 */
+  width: 100%; /* 设置宽度为100%，充满整个容器 */
+  max-width: 1200px; /* 设置最大宽度以避免内容溢出 */
+  margin: 0 auto; /* 水平居中容器 */
 }
 
 .grid-item {
@@ -268,6 +302,7 @@ export default {
   border: 1px solid #ccc; /* 设置块的边框 */
   border-radius: 5px; /* 设置块的圆角 */
   padding: 20px; /* 设置块的内边距 */
+  width: 80%; /* 设置每个子项的宽度为100%，以填充容器 */
 }
 
 .item-content {

@@ -1,21 +1,45 @@
 <template>
   <div>
     <div style="margin-bottom: 5px">
-      <el-input v-model="name" placeholder="请输入评价内容" suffix-icon="el-icon-search" style="width: 200px"
+      <el-input v-model="name" placeholder="请输入评价人" suffix-icon="el-icon-search" style="width: 200px"
                 @keyup.enter.native="loadPost"></el-input>
       <el-button type="primary" style="margin-left: 5px" @click="loadPost">查询</el-button>
       <el-button type="success" style="margin-left: 5px" @click="resetParam" >重置</el-button>
-      <el-button type="primary" style="margin-left: 5px" @click="add">新增</el-button>
+      <el-button type="warning" style="margin-left: 5px" @click="add">新增</el-button>
     </div>
     <el-table :data="tableData"
               :header-cell-style="{background:'#f3f3fd',color:'#555'}"
               border
     >
       <el-table-column prop="id" label="ID" width="100">
+        <template slot-scope="scope">
+          <div style="height: 56px; font-size: 16px;">
+            {{ scope.row.id}}
+          </div>
+        </template>
       </el-table-column>
+
+<!--      <el-table-column prop="name" label="评价人" width="200">-->
+<!--        <template slot-scope="scope">-->
+<!--          <div style="height: 56px;">-->
+<!--            {{ scope.row.name }}-->
+<!--          </div>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
       <el-table-column prop="name" label="评价人" width="200">
+        <template slot-scope="scope">
+          <div style="height: 56px; font-size: 16px;">
+            {{ scope.row.name }}
+          </div>
+        </template>
       </el-table-column>
+
       <el-table-column prop="remark" label="评价内容" >
+        <template slot-scope="scope">
+          <div style="height: 56px; font-size: 16px;">
+            {{ scope.row.remark }}
+          </div>
+        </template>
       </el-table-column>
       <el-table-column prop="operate" label="操作" width="170">
         <template slot-scope="scope">

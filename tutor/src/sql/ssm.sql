@@ -153,6 +153,26 @@ CREATE TABLE `review`  (
 -- ----------------------------
 INSERT INTO `review` VALUES (1, 'why', '系统简洁易用，赞！');
 INSERT INTO `review` VALUES (2, '张三', '太棒了！');
+INSERT INTO `review` VALUES (3, '李四', '功能强大，操作简单，非常满意！');
+INSERT INTO `review` VALUES (4, '王五', '非常棒的服务，下次还会再来！');
+INSERT INTO `review` VALUES (5, '赵六', '老师讲得很好，值得信赖！');
+INSERT INTO `review` VALUES (6, '孙七', '非常满意，下次还会再买！');
+INSERT INTO `review` VALUES (7, '周八', '服务态度非常好，很满意！');
+INSERT INTO `review` VALUES (8, '吴九', '网站很好值得推荐！');
+INSERT INTO `review` VALUES (9, '郑十', '老师很好，服务态度也不错！');
+INSERT INTO `review` VALUES (10, '陈十一', '非常满意，下次还会再来！');
+INSERT INTO `review` VALUES (11, '钱十二', '学生学习努力，我很有成就感');
+INSERT INTO `review` VALUES (12, '李十三', '老师很棒，我进步很大');
+INSERT INTO `review` VALUES (13, '王十四', '学生学习很认真，进步明显');
+INSERT INTO `review` VALUES (14, '赵十五', '老师人特别好，已经推荐给同学了');
+INSERT INTO `review` VALUES (15, '孙十六', '特别好，赞一个');
+INSERT INTO `review` VALUES (16, '周十七', '很好的系统，美观好用');
+INSERT INTO `review` VALUES (17, '吴十八', '很好很好，找到了合适的老师');
+INSERT INTO `review` VALUES (18, '郑十九', '帮助我在业余时间辅导了很多认真的学生');
+INSERT INTO `review` VALUES (19, '陈二十', '老师很值得信赖！');
+INSERT INTO `review` VALUES (20, '李二十一', '非常满意，下次有需要继续使用！');
+
+
 
 -- ----------------------------
 -- Table structure for user
