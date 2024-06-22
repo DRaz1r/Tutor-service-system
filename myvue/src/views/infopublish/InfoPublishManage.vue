@@ -21,6 +21,7 @@
       <el-button type="primary" style="margin-left: 5px" @click="loadPost">查询</el-button>
       <el-button type="success" style="margin-left: 5px" @click="resetParam">重置</el-button>
       <el-button type="warning" style="margin-left: 5px" @click="add">新增</el-button>
+      <el-button type="info" style="margin-left: 5px" @click="recommend">推荐</el-button>
     </div>
 
     <div class="grid-container">
@@ -43,6 +44,7 @@
             <span class="tag">{{ item.days }}</span>
             <span class="tag">{{ item.grades }}</span>
             <span class="tag">{{ item.periods }}</span>
+            <span class="tag">{{ item.likes }}</span>
           </div>
 
           <!-- 个人简介 -->
@@ -59,9 +61,15 @@
 
           <!-- 操作按钮 -->
           <div class="action-buttons">
-            <el-button v-bind:data-type="'thumbButton'" type="primary" icon="el-icon-thumb" v-on:click="animateBtn">点赞</el-button>
-            <el-button v-bind:data-type="'commentButton'" type="primary" icon="el-icon-chat-dot-round" v-on:click="animateBtn">评论</el-button>
-            <el-button v-bind:data-type="'favoriteButton'" type="primary" icon="el-icon-star-off" v-on:click="animateBtn">收藏</el-button>
+            <el-button v-bind:data-type="'thumbButton'" type="primary" icon="el-icon-thumb"
+                       v-on:click="likescount">点赞
+            </el-button>
+            <el-button v-bind:data-type="'commentButton'" type="primary" icon="el-icon-chat-dot-round"
+                       v-on:click="animateBtn">评论
+            </el-button>
+            <el-button v-bind:data-type="'favoriteButton'" type="primary" icon="el-icon-star-off"
+                       v-on:click="animateBtn">收藏
+            </el-button>
           </div>
         </el-col>
       </el-row>
@@ -119,7 +127,7 @@
         </el-form-item>
         <el-form-item label="时间" prop="days">
           <el-col :span="20">
-            <el-select v-model="form.days" placeholder="请选择星期" >
+            <el-select v-model="form.days" placeholder="请选择星期">
               <el-option
                 v-for="day in days"
                 :key="day.value"
@@ -169,72 +177,73 @@ export default {
       pageSize: 5,
       pageNum: 1,
       total: 0,
-      grade:'',
-      subject:'',
+      grade: '',
+      subject: '',
       backendUrl: 'http://localhost:8081',
       dialogVisible: false,
       form: {
-        title:'',
+        title: '',
         id: '',
         userId: '',
         subjects: '',
         grades: '',
         days: '',
-        periods:'',
+        periods: '',
         introduction: '',
-        imageUrl: '' // 存储上传图片的URL
+        imageUrl: '', // 存储上传图片的URL
+        likes: ''
       },
       // 科目选项
       subjects: [
-        { value: '语文', label: '语文' },
-        { value: '数学', label: '数学' },
-        { value: '英语', label: '英语' },
-        { value: '生物', label: '生物' },
-        { value: '化学', label: '化学' },
-        { value: '物理', label: '物理' },
-        { value: '政治', label: '政治' },
-        { value: '历史', label: '历史' },
-        { value: '地理', label: '地理' }
+        {value: '语文', label: '语文'},
+        {value: '数学', label: '数学'},
+        {value: '英语', label: '英语'},
+        {value: '生物', label: '生物'},
+        {value: '化学', label: '化学'},
+        {value: '物理', label: '物理'},
+        {value: '政治', label: '政治'},
+        {value: '历史', label: '历史'},
+        {value: '地理', label: '地理'}
       ],
       // 年级选项
       grades: [
-        { value: '一年级', label: '一年级' },
-        { value: '二年级', label: '二年级' },
-        { value: '三年级', label: '三年级' },
-        { value: '四年级', label: '四年级' },
-        { value: '五年级', label: '五年级' },
-        { value: '六年级', label: '六年级' },
-        { value: '初一', label: '初一' },
-        { value: '初二', label: '初二' },
-        { value: '初三', label: '初三' },
-        { value: '高一', label: '高一' },
-        { value: '高二', label: '高二' },
-        { value: '高三', label: '高三' },
-        { value: '考研', label: '考研' }
+        {value: '一年级', label: '一年级'},
+        {value: '二年级', label: '二年级'},
+        {value: '三年级', label: '三年级'},
+        {value: '四年级', label: '四年级'},
+        {value: '五年级', label: '五年级'},
+        {value: '六年级', label: '六年级'},
+        {value: '初一', label: '初一'},
+        {value: '初二', label: '初二'},
+        {value: '初三', label: '初三'},
+        {value: '高一', label: '高一'},
+        {value: '高二', label: '高二'},
+        {value: '高三', label: '高三'},
+        {value: '考研', label: '考研'}
       ],
       // 星期选项
       days: [
-        { value: '周一', label: '星期一' },
-        { value: '周二', label: '星期二' },
-        { value: '周三', label: '星期三' },
-        { value: '周四', label: '星期四' },
-        { value: '周五', label: '星期五' },
-        { value: '周六', label: '星期六' },
-        { value: '周日', label: '星期天' }
+        {value: '周一', label: '星期一'},
+        {value: '周二', label: '星期二'},
+        {value: '周三', label: '星期三'},
+        {value: '周四', label: '星期四'},
+        {value: '周五', label: '星期五'},
+        {value: '周六', label: '星期六'},
+        {value: '周日', label: '星期天'}
       ],
       // 时间段选项
       periods: [
-        { value: '上午', label: '上午' },
-        { value: '下午', label: '下午' },
-        { value: '晚上', label: '晚上' }
+        {value: '上午', label: '上午'},
+        {value: '下午', label: '下午'},
+        {value: '晚上', label: '晚上'}
       ],
       rules: {
-        userId: [{ required: true, message: '请输入用户ID', trigger: 'blur' },],
-        title: [{ required: true, message: '请输入标题',  trigger: 'blur' }],
-        subjects: [{ required: true, message: '请选择科目', trigger: 'change' }],
-        grades: [{ required: true, message: '请选择年级', trigger: 'change' }],
-        days: [{ required: true, message: '请选择星期', trigger: 'change' }],
-        periods: [{ required: true, message: '请选择时间段', trigger: 'change' }]
+        userId: [{required: true, message: '请输入用户ID', trigger: 'blur'},],
+        title: [{required: true, message: '请输入标题', trigger: 'blur'}],
+        subjects: [{required: true, message: '请选择科目', trigger: 'change'}],
+        grades: [{required: true, message: '请选择年级', trigger: 'change'}],
+        days: [{required: true, message: '请选择星期', trigger: 'change'}],
+        periods: [{required: true, message: '请选择时间段', trigger: 'change'}]
       }
     };
   },
@@ -246,8 +255,66 @@ export default {
       button.classList.add('animate__animated', 'animate__bounce');
       button.addEventListener('animationend', () => {
         button.classList.remove('animate__animated', 'animate__bounce');
-      }, { once: true }); // 一次性事件监听器，确保在动画结束后只执行一次
+      }, {once: true}); // 一次性事件监听器，确保在动画结束后只执行一次
     },
+    likescount(event) {
+      // 获取触发事件的元素
+      const button = event.currentTarget;
+      console.log(`Clicked button type:`, button.dataset.type);
+      button.classList.add('animate__animated', 'animate__bounce');
+      button.addEventListener('animationend', () => {
+        button.classList.remove('animate__animated', 'animate__bounce');
+      }, {once: true}); // 一次性事件监听器，确保在动画结束后只执行一次
+
+      // this.form.likes= row.likes + 1;
+
+      // 找到对应的数据项
+      // const itemId = button.closest('.grid-item').dataset.itemId; // 假设每个.grid-item都有一个'data-item-id'属性
+      // const item = this.tableData.find(item => item.id === itemId);
+      //
+      // if (item) {
+      //   // 增加点赞数
+      //   item.likes += 1;
+      //
+      //
+      //   this.$axios.post(this.$httpUrl+'/infopublish',this.form).then(res=>res.data).then(res=>{
+      //     console.log(res)
+      //     if(res.code==200){
+      //       this.$message({
+      //         message: '操作成功！',
+      //         type: 'success'
+      //       });
+      //       this.centerDialogVisible = false
+      //       this.loadPost()
+      //       this.resetForm()
+      //     }else{
+      //       this.$message({
+      //         message: '操作失败！',
+      //         type: 'error'
+      //       });
+      //     }
+      //
+      //   })
+      //
+      //
+      //
+      //
+      //
+      //
+      //
+      //
+      //   // 更新后端数据库
+      //   // this.updatelikesInBackend(itemId, item.likes);
+      // }
+    },
+
+
+
+
+
+
+
+
     toggleIntroduction(id) {
       if (!this.showFullIntroduction[id]) {
         this.$set(this.showFullIntroduction, id, true);
@@ -276,9 +343,11 @@ export default {
     mod(row) {
       this.dialogVisible = true;
       this.$nextTick(() => {
-        this.form = { ...row };
+        this.form = {...row};
       });
     },
+
+
     del(id) {
       // 删除数据的axios请求
       console.log(id);
@@ -298,9 +367,9 @@ export default {
       });
     },
     doSave() {
-      this.$axios.post(this.$httpUrl+'/infopublish/save',this.form).then(res=>res.data).then(res=>{
+      this.$axios.post(this.$httpUrl + '/infopublish/save', this.form).then(res => res.data).then(res => {
         console.log(res)
-        if(res.code==200){
+        if (res.code == 200) {
 
           this.$message({
             message: '操作成功！',
@@ -309,7 +378,7 @@ export default {
           this.centerDialogVisible = false
           this.loadPost()
           this.resetForm()
-        }else{
+        } else {
           this.$message({
             message: '操作失败！',
             type: 'error'
@@ -318,9 +387,9 @@ export default {
       })
     },
     doMod() {
-      this.$axios.post(this.$httpUrl+'/infopublish/update',this.form).then(res=>res.data).then(res=>{
+      this.$axios.post(this.$httpUrl + '/infopublish/update', this.form).then(res => res.data).then(res => {
         console.log(res)
-        if(res.code==200){
+        if (res.code == 200) {
           this.$message({
             message: '操作成功！',
             type: 'success'
@@ -328,7 +397,7 @@ export default {
           this.centerDialogVisible = false
           this.loadPost()
           this.resetForm()
-        }else{
+        } else {
           this.$message({
             message: '操作失败！',
             type: 'error'
@@ -338,19 +407,19 @@ export default {
       })
     },
     loadPost() {
-      this.$axios.post(this.$httpUrl+'/infopublish/listPage',{
-        pageSize:this.pageSize,
-        pageNum:this.pageNum,
-        param:{
-            subject: this.subject+'',
-            grade: this.grade+'',
+      this.$axios.post(this.$httpUrl + '/infopublish/listPage', {
+        pageSize: this.pageSize,
+        pageNum: this.pageNum,
+        param: {
+          subject: this.subject + '',
+          grade: this.grade + '',
         }
-      }).then(res=>res.data).then(res=>{
+      }).then(res => res.data).then(res => {
         console.log(res)
-        if(res.code==200){
-          this.tableData=res.data;
-          this.total=res.total;
-        }else {
+        if (res.code == 200) {
+          this.tableData = res.data;
+          this.total = res.total;
+        } else {
           alert('获取数据失败')
         }
 
@@ -368,7 +437,12 @@ export default {
       this.subject = '';
       this.grade = '';
       this.loadPost();
-    }
+    },
+    recommend() {
+      this.subject = '';
+      this.grade = '';
+      this.loadPost();
+    },
   },
   beforeMount() {
     this.loadPost();

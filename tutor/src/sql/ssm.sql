@@ -77,6 +77,7 @@ CREATE TABLE `info_publish`  (
   `periods` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '时间段',
   `introduction` text CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL COMMENT '个人简介或其他信息',
   `image_url` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '图片url',
+  `likes` int NOT NULL COMMENT '点赞数',
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id` ASC) USING BTREE,
   CONSTRAINT `info_publish_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -91,24 +92,24 @@ CREATE TABLE `info_publish`  (
 # INSERT INTO `info_publish` VALUES (4, 5, '英语', '高三', '高三英语', '星期二,星期四', '下午', '英语教学能手', '/uploads/teacher4.jpg');
 # INSERT INTO `info_publish` VALUES (5, 6, '生物', '高三', '高三生物', '星期三,星期五', '晚上', '高中生物速成', '/uploads/teacher5.jpg');
 
-INSERT INTO `info_publish` VALUES (1, 2, '数学', '高一', '高一数学', '星期一,星期三,星期五', '上午', '我是一名有责任心的数学老师，从教多年，擅长用生动有趣的方式讲解数学概念，帮助学生提高数学成绩。电话：13800138000', '/uploads/teacher1.jpg');
-INSERT INTO `info_publish` VALUES (2, 3, '语文', '高三', '高三语文', '星期一,星期三', '下午', '我是一名有责任心的语文老师，从教多年，擅长讲解语文知识点，帮助学生提高语文成绩。邮箱：15491512165@qq.com', '/uploads/teacher2.jpg');
-INSERT INTO `info_publish` VALUES (3, 4, '英语', '高三', '高三英语', '星期二,星期四', '下午', '我是一名有责任心的英语老师，从教多年，擅长讲解英语知识点，帮助学生提高英语成绩。电话：13900139000', '/uploads/teacher3.jpg');
-INSERT INTO `info_publish` VALUES (4, 5, '生物', '高三', '高三生物', '星期三,星期五', '晚上', '我是一名有责任心的生物老师，从教多年，擅长讲解生物知识点，帮助学生提高生物成绩。邮箱：3649189331@hit.edu.cn', '/uploads/teacher4.jpg');
-INSERT INTO `info_publish` VALUES (5, 6, '化学', '高一', '高一化学', '星期二,星期四', '下午', '我是一名有责任心的化学老师，从教多年，擅长讲解化学知识点，帮助学生提高化学成绩。电话：13700137000', '/uploads/teacher5.jpg');
-INSERT INTO `info_publish` VALUES (6, 7, '地理', '高二', '高二地理', '星期三,星期五', '晚上', '我是一名有责任心的地理老师，从教多年，擅长讲解地理知识点，帮助学生提高地理成绩。电话：13600136000', '/uploads/teacher6.jpg');
-INSERT INTO `info_publish` VALUES (7, 8, '物理', '高三', '高三物理', '星期一,星期三,星期五', '上午', '我是一名有责任心的物理老师，从教多年，擅长讲解物理知识点，帮助学生提高物理成绩。电话：13500135000', '/uploads/teacher7.jpg');
-INSERT INTO `info_publish` VALUES (8, 9, '历史', '高一', '高一历史', '星期二,星期四', '下午', '我是一名有责任心的历史老师，从教多年，擅长讲解历史知识点，帮助学生提高历史成绩。邮箱：1546494616@qq.com', '/uploads/teacher8.jpg');
-INSERT INTO `info_publish` VALUES (9, 10, '政治', '高二', '高二政治', '星期三,星期五', '晚上', '我是一名有责任心的政治老师，从教多年，擅长讲解政治知识点，帮助学生提高政治成绩。电话：13400134000', '/uploads/teacher9.jpg');
-INSERT INTO `info_publish` VALUES (10, 11, '英语', '高三', '高三英语', '星期二,星期四', '下午', '我是一名有责任心的英语老师，从教多年，擅长讲解英语知识点，帮助学生提高英语成绩。邮箱：1568156181@qq.com', '/uploads/teacher10.jpg');
-INSERT INTO `info_publish` VALUES (11, 12, '数学', '高一', '高一数学', '星期一,星期三,星期五', '上午', '我是一名有责任心的数学老师，从教多年，擅长用生动有趣的方式讲解数学概念，帮助学生提高数学成绩。电话：13800138000', '/uploads/teacher1.jpg');
-INSERT INTO `info_publish` VALUES (12, 13, '语文', '高三', '高三语文', '星期一,星期三', '下午', '我是一名有责任心的语文老师，从教多年，擅长讲解语文知识点，帮助学生提高语文成绩。邮箱：1564891651@qq.com', '/uploads/teacher2.jpg');
-INSERT INTO `info_publish` VALUES (13, 14, '生物', '高三', '高三生物', '星期三,星期五', '晚上', '我是一名有责任心的生物老师，从教多年，擅长讲解生物知识点，帮助学生提高生物成绩。电话：13900139000', '/uploads/teacher3.jpg');
-INSERT INTO `info_publish` VALUES (14, 15, '化学', '高一', '高一化学', '星期二,星期四', '下午', '我是一名有责任心的化学老师，从教多年，擅长讲解化学知识点，帮助学生提高化学成绩。邮箱：1945661658@qq.com', '/uploads/teacher4.jpg');
-INSERT INTO `info_publish` VALUES (15, 16, '地理', '高二', '高二地理', '星期三,星期五', '晚上', '我是一名有责任心的地理老师，从教多年，擅长讲解地理知识点，帮助学生提高地理成绩。电话：13700137000', '/uploads/teacher5.jpg');
-INSERT INTO `info_publish` VALUES (16, 17, '物理', '高三', '高三物理', '星期一,星期三,星期五', '上午', '我是一名有责任心的物理老师，从教多年，擅长讲解物理知识点，帮助学生提高物理成绩。邮箱：1984126188@qq.com', '/uploads/teacher6.jpg');
-INSERT INTO `info_publish` VALUES (17, 18, '历史', '高一', '高一历史', '星期二,星期四', '下午', '我是一名有责任心的历史老师，从教多年，擅长讲解历史知识点，帮助学生提高历史成绩。电话：13600136000', '/uploads/teacher7.jpg');
-INSERT INTO `info_publish` VALUES (18, 19, '政治', '高二', '高二政治', '星期三,星期五', '晚上', '我是一名有责任心的政治老师，从教多年，擅长讲解政治知识点，帮助学生提高政治成绩。电话：13500135000', '/uploads/teacher8.jpg');
+INSERT INTO `info_publish` VALUES (1, 2, '数学', '高一', '高一数学', '星期一,星期三,星期五', '上午', '我是一名有责任心的数学老师，从教多年，擅长用生动有趣的方式讲解数学概念，帮助学生提高数学成绩。电话：13800138000', '/uploads/teacher1.jpg',1);
+INSERT INTO `info_publish` VALUES (2, 3, '语文', '高三', '高三语文', '星期一,星期三', '下午', '我是一名有责任心的语文老师，从教多年，擅长讲解语文知识点，帮助学生提高语文成绩。邮箱：15491512165@qq.com', '/uploads/teacher2.jpg',2);
+INSERT INTO `info_publish` VALUES (3, 4, '英语', '高三', '高三英语', '星期二,星期四', '下午', '我是一名有责任心的英语老师，从教多年，擅长讲解英语知识点，帮助学生提高英语成绩。电话：13900139000', '/uploads/teacher3.jpg',3);
+INSERT INTO `info_publish` VALUES (4, 5, '生物', '高三', '高三生物', '星期三,星期五', '晚上', '我是一名有责任心的生物老师，从教多年，擅长讲解生物知识点，帮助学生提高生物成绩。邮箱：3649189331@hit.edu.cn', '/uploads/teacher4.jpg',4);
+INSERT INTO `info_publish` VALUES (5, 6, '化学', '高一', '高一化学', '星期二,星期四', '下午', '我是一名有责任心的化学老师，从教多年，擅长讲解化学知识点，帮助学生提高化学成绩。电话：13700137000', '/uploads/teacher5.jpg',5);
+INSERT INTO `info_publish` VALUES (6, 7, '地理', '高二', '高二地理', '星期三,星期五', '晚上', '我是一名有责任心的地理老师，从教多年，擅长讲解地理知识点，帮助学生提高地理成绩。电话：13600136000', '/uploads/teacher6.jpg',6);
+INSERT INTO `info_publish` VALUES (7, 8, '物理', '高三', '高三物理', '星期一,星期三,星期五', '上午', '我是一名有责任心的物理老师，从教多年，擅长讲解物理知识点，帮助学生提高物理成绩。电话：13500135000', '/uploads/teacher7.jpg',7);
+INSERT INTO `info_publish` VALUES (8, 9, '历史', '高一', '高一历史', '星期二,星期四', '下午', '我是一名有责任心的历史老师，从教多年，擅长讲解历史知识点，帮助学生提高历史成绩。邮箱：1546494616@qq.com', '/uploads/teacher8.jpg',8);
+INSERT INTO `info_publish` VALUES (9, 10, '政治', '高二', '高二政治', '星期三,星期五', '晚上', '我是一名有责任心的政治老师，从教多年，擅长讲解政治知识点，帮助学生提高政治成绩。电话：13400134000', '/uploads/teacher9.jpg',9);
+INSERT INTO `info_publish` VALUES (10, 11, '英语', '高三', '高三英语', '星期二,星期四', '下午', '我是一名有责任心的英语老师，从教多年，擅长讲解英语知识点，帮助学生提高英语成绩。邮箱：1568156181@qq.com', '/uploads/teacher10.jpg',10);
+INSERT INTO `info_publish` VALUES (11, 12, '数学', '高一', '高一数学', '星期一,星期三,星期五', '上午', '我是一名有责任心的数学老师，从教多年，擅长用生动有趣的方式讲解数学概念，帮助学生提高数学成绩。电话：13800138000', '/uploads/teacher1.jpg',1);
+INSERT INTO `info_publish` VALUES (12, 13, '语文', '高三', '高三语文', '星期一,星期三', '下午', '我是一名有责任心的语文老师，从教多年，擅长讲解语文知识点，帮助学生提高语文成绩。邮箱：1564891651@qq.com', '/uploads/teacher2.jpg',2);
+INSERT INTO `info_publish` VALUES (13, 14, '生物', '高三', '高三生物', '星期三,星期五', '晚上', '我是一名有责任心的生物老师，从教多年，擅长讲解生物知识点，帮助学生提高生物成绩。电话：13900139000', '/uploads/teacher3.jpg',3);
+INSERT INTO `info_publish` VALUES (14, 15, '化学', '高一', '高一化学', '星期二,星期四', '下午', '我是一名有责任心的化学老师，从教多年，擅长讲解化学知识点，帮助学生提高化学成绩。邮箱：1945661658@qq.com', '/uploads/teacher4.jpg',4);
+INSERT INTO `info_publish` VALUES (15, 16, '地理', '高二', '高二地理', '星期三,星期五', '晚上', '我是一名有责任心的地理老师，从教多年，擅长讲解地理知识点，帮助学生提高地理成绩。电话：13700137000', '/uploads/teacher5.jpg',5);
+INSERT INTO `info_publish` VALUES (16, 17, '物理', '高三', '高三物理', '星期一,星期三,星期五', '上午', '我是一名有责任心的物理老师，从教多年，擅长讲解物理知识点，帮助学生提高物理成绩。邮箱：1984126188@qq.com', '/uploads/teacher6.jpg',4);
+INSERT INTO `info_publish` VALUES (17, 18, '历史', '高一', '高一历史', '星期二,星期四', '下午', '我是一名有责任心的历史老师，从教多年，擅长讲解历史知识点，帮助学生提高历史成绩。电话：13600136000', '/uploads/teacher7.jpg',3);
+INSERT INTO `info_publish` VALUES (18, 19, '政治', '高二', '高二政治', '星期三,星期五', '晚上', '我是一名有责任心的政治老师，从教多年，擅长讲解政治知识点，帮助学生提高政治成绩。电话：13500135000', '/uploads/teacher8.jpg',2);
 
 
 -- ----------------------------
