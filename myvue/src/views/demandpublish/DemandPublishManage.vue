@@ -265,6 +265,7 @@ export default {
     resetParam() {
       this.subject = '';
       this.grade = '';
+      this.loadPost();
     }
   },
   beforeMount() {
