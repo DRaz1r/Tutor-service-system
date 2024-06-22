@@ -309,12 +309,6 @@ export default {
     },
 
 
-
-
-
-
-
-
     toggleIntroduction(id) {
       if (!this.showFullIntroduction[id]) {
         this.$set(this.showFullIntroduction, id, true);
