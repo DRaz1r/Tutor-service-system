@@ -43,23 +43,6 @@
             disable-transitions>{{scope.row.roleId === 0? '超级管理员' : (scope.row.roleId === 1? '教师' : '用户')}}</el-tag>
         </template>
       </el-table-column>
-<!--      <el-table-column prop="phone" label="电话" width="150">-->
-<!--      </el-table-column>-->
-<!--      <el-table-column prop="phone" label="电话" width="180">-->
-<!--        <template slot-scope="scope">-->
-<!--          <div style="height: 60px;">-->
-<!--            {{ scope.row.phone }}-->
-<!--          </div>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
-
-<!--      <el-table-column prop="phone" label="电话" width="180">-->
-<!--        <template slot-scope="scope">-->
-<!--          <div style="text-align: center; vertical-align: middle; height: 60px;">-->
-<!--            {{ scope.row.phone }}-->
-<!--          </div>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
 
       <el-table-column prop="phone" label="电话" width="180">
         <template slot-scope="scope">

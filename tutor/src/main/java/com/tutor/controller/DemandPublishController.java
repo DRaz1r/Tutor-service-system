@@ -80,7 +80,7 @@ public class DemandPublishController {
             LambdaQueryWrapper.eq(DemandPublish::getGrades,grade);
         }
 
-        Page<DemandPublish> page = demandPublishService.page(userPage, LambdaQueryWrapper);
+        Page<DemandPublish> page = demandPublishService.getDemandPublishWithUsername(userPage, LambdaQueryWrapper);
         return Result.success(page.getRecords(),page.getTotal());
     }
 }

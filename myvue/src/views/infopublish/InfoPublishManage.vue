@@ -25,61 +25,20 @@
     </div>
 
     <div class="grid-container">
-      <el-row v-for="item in tableData" :key="item.id" class="grid-item animate__animated animate__fadeIn">
-        <el-col :span="24" class="item-content">
-          <!-- 用户信息 -->
-          <div class="user-info">
-            <h3>{{ item.title }}</h3>
-            <span class="user-name">@{{ item.userName }}</span>
-          </div>
-
-          <!-- 用户头像 -->
-          <div class="user-avatar-container animate__animated animate__zoomIn">
-            <img class="user-avatar" :src="backendUrl + item.imageUrl" alt="用户头像">
-          </div>
-
-          <!-- 标签栏 -->
-          <div class="tags animate__animated animate__slideInUp">
-            <span class="tag">{{ item.subjects }}</span>
-            <span class="tag">{{ item.days }}</span>
-            <span class="tag">{{ item.grades }}</span>
-            <span class="tag">{{ item.periods }}</span>
-            <span class="tag">{{ item.likes }}</span>
-          </div>
-
-          <!-- 个人简介 -->
-          <div class="introduction">
-            <template v-if="showFullIntroduction[item.id]">
-              {{ item.introduction }}
-              <el-button type="text" @click="toggleIntroduction(item.id)">收起</el-button>
-            </template>
-            <template v-else>
-              {{ item.introduction.substring(0, 100) }}<span v-if="item.introduction.length > 100">...</span>
-              <el-button type="text" @click="toggleIntroduction(item.id)">展开</el-button>
-            </template>
-          </div>
-
-          <!-- 操作按钮 -->
-          <div class="action-buttons">
-            <el-button v-bind:data-type="'thumbButton'" type="primary" icon="el-icon-thumb"
-                       v-on:click="likescount">点赞
-            </el-button>
-            <el-button v-bind:data-type="'commentButton'" type="primary" icon="el-icon-chat-dot-round"
-                       v-on:click="animateBtn">评论
-            </el-button>
-            <el-button v-bind:data-type="'favoriteButton'" type="primary" icon="el-icon-star-off"
-                       v-on:click="animateBtn">收藏
-            </el-button>
-          </div>
-        </el-col>
-      </el-row>
+      <info-publish-item
+        v-for="item in tableData"
+        :key="item.id"
+        :item="item"
+        :backend-url="backendUrl"
+        @like="handleLike">
+      </info-publish-item>
     </div>
 
     <el-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="pageNum"
-      :page-sizes="[2, 5, 7]"
+      :page-sizes="[3, 6, 9]"
       :page-size="pageSize"
       layout="total, sizes, prev, pager, next, jumper"
       :total="total">
@@ -169,12 +128,16 @@
 </template>
 
 <script>
+import InfoPublishItem from './InfoPublishItem.vue';
 export default {
+  components: {
+    InfoPublishItem
+  },
   data() {
     return {
       tableData: [],
       showFullIntroduction: {},
-      pageSize: 5,
+      pageSize: 6,
       pageNum: 1,
       total: 0,
       grade: '',
@@ -248,6 +211,27 @@ export default {
     };
   },
   methods: {
+    handleLike(itemId) {
+      const item = this.tableData.find(item => item.id === itemId);
+      if (item) {
+        item.likes += 1;
+        // 更新后端数据库
+        this.$axios.post(this.$httpUrl + '/infopublish/update', item).then(res => res.data).then(res => {
+          if (res.code === 200) {
+            this.$message({
+              message: '点赞成功！',
+              type: 'success'
+            });
+          } else {
+            this.$message({
+              message: '点赞失败！',
+              type: 'error'
+            });
+          }
+        });
+      }
+    },
+
     animateBtn(event) {
       // 获取触发事件的元素
       const button = event.currentTarget;
@@ -257,57 +241,6 @@ export default {
         button.classList.remove('animate__animated', 'animate__bounce');
       }, {once: true}); // 一次性事件监听器，确保在动画结束后只执行一次
     },
-    likescount(event) {
-      // 获取触发事件的元素
-      const button = event.currentTarget;
-      console.log(`Clicked button type:`, button.dataset.type);
-      button.classList.add('animate__animated', 'animate__bounce');
-      button.addEventListener('animationend', () => {
-        button.classList.remove('animate__animated', 'animate__bounce');
-      }, {once: true}); // 一次性事件监听器，确保在动画结束后只执行一次
-
-      // this.form.likes= row.likes + 1;
-
-      // 找到对应的数据项
-      // const itemId = button.closest('.grid-item').dataset.itemId; // 假设每个.grid-item都有一个'data-item-id'属性
-      // const item = this.tableData.find(item => item.id === itemId);
-      //
-      // if (item) {
-      //   // 增加点赞数
-      //   item.likes += 1;
-      //
-      //
-      //   this.$axios.post(this.$httpUrl+'/infopublish',this.form).then(res=>res.data).then(res=>{
-      //     console.log(res)
-      //     if(res.code==200){
-      //       this.$message({
-      //         message: '操作成功！',
-      //         type: 'success'
-      //       });
-      //       this.centerDialogVisible = false
-      //       this.loadPost()
-      //       this.resetForm()
-      //     }else{
-      //       this.$message({
-      //         message: '操作失败！',
-      //         type: 'error'
-      //       });
-      //     }
-      //
-      //   })
-      //
-      //
-      //
-      //
-      //
-      //
-      //
-      //
-      //   // 更新后端数据库
-      //   // this.updatelikesInBackend(itemId, item.likes);
-      // }
-    },
-
 
     toggleIntroduction(id) {
       if (!this.showFullIntroduction[id]) {
@@ -416,7 +349,6 @@ export default {
         } else {
           alert('获取数据失败')
         }
-
       })
     },
     handleSizeChange(val) {
@@ -433,9 +365,9 @@ export default {
       this.loadPost();
     },
     recommend() {
-      this.subject = '';
-      this.grade = '';
-      this.loadPost();
+      // 按照 likes 字段排序
+      this.tableData.sort((a, b) => b.likes - a.likes);
+      // 这里可以写具体推荐
     },
   },
   beforeMount() {
@@ -459,60 +391,6 @@ export default {
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.2s;
-}
-
-.item-content {
-  padding: 20px;
-}
-
-.user-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.user-name {
-  color: #888;
-  font-size: 14px;
-}
-
-.user-avatar-container {
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.user-avatar {
-  width: 95%;
-  border-radius: 10%;
-  object-fit: cover;
-  border: 2px solid #eaeaea;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.tag {
-  background-color: #f5f5f5;
-  border-radius: 12px;
-  padding: 6px 12px;
-  font-size: 12px;
-  color: #666;
-}
-
-.introduction {
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-
-.action-buttons {
-  display: flex;
-  justify-content: flex-end; /* 将按钮靠右对齐 */
-  margin-top: 10px;
 }
 
 .el-button {

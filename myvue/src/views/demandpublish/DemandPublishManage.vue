@@ -14,7 +14,7 @@
           v-for="item in subjects"
           :key="item.value"
           :label="item.label"
-          :value="item.label">
+          :value="item.value">
         </el-option>
       </el-select>
 
@@ -25,7 +25,9 @@
     <div class="grid-container">
       <div v-for="item in tableData" :key="item.id" class="grid-item">
         <div class="item-content">
-          <div class="user-id">{{ item.userId }}</div>
+          <div class="user-info">
+            <span class="user-name">@{{ item.userName }}</span>
+          </div>          
           <div class="tags">
             <span class="tag">{{ item.subjects }}</span>
             <span class="tag">{{ item.grades }}</span>
@@ -40,7 +42,7 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="pageNum"
-      :page-sizes="[3, 5, 9]"
+      :page-sizes="[3, 6, 9]"
       :page-size="pageSize"
       layout="total, sizes, prev, pager, next, jumper"
       :total="total">
@@ -93,26 +95,12 @@ export default {
   data() {
     return {
       tableData: [],
-      pageSize: 5,
+      pageSize: 6,
       pageNum: 1,
       total: 0,
-      userId: '',
       dialogVisible: false,
       subject:'',
       grade:'',
-      // subjects:[
-      //   {
-      //     value: '2',
-      //     label: '语文'
-      //   }, {
-      //     value: '1',
-      //     label: '数学'
-      //   }, {
-      //     value: '0',
-      //     label: '英语'
-      //   }
-      // ],
-
       // 科目选项
       subjects: [
         { value: '语文', label: '语文' },
@@ -311,7 +299,7 @@ export default {
   flex-direction: column;
 }
 
-.user-id {
+.user-info {
   font-weight: bold;
   font-size: 14px;
   margin-bottom: 10px;

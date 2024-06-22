@@ -11,7 +11,7 @@
  Target Server Version : 80037 (8.0.37)
  File Encoding         : 65001
 
- Date: 20/06/2024 23:28:35
+ Date: 22/06/2024 23:47:06
 */
 
 SET NAMES utf8mb4;
@@ -31,14 +31,7 @@ CREATE TABLE `demand_publish`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id` ASC) USING BTREE,
   CONSTRAINT `demand_publish_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
-
--- ----------------------------
--- Records of demand_publish
--- ----------------------------
-# INSERT INTO `demand_publish` VALUES (1, 20, '语文', '高一', '周天', '帮我强化古诗词');
-# INSERT INTO `demand_publish` VALUES (2, 21, '数学', '高二', '周一', '找数学专业的老师');
-# INSERT INTO `demand_publish` VALUES (3, 22, '英语', '高三', '周二', '要求要有留学经历的老师');
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of demand_publish
@@ -62,7 +55,6 @@ INSERT INTO `demand_publish` VALUES (16, 35, '地理', '初一', '周六', '寻�
 INSERT INTO `demand_publish` VALUES (17, 36, '历史', '初二', '周六', '希望找到一位擅长历史学的老师，能培养我历史学科的解题能力。座机88962564');
 INSERT INTO `demand_publish` VALUES (18, 37, '政治', '初三', '周日', '寻找一位擅长政治学的老师，能帮助我提高政治素养。电话15498745699');
 
-
 -- ----------------------------
 -- Table structure for info_publish
 -- ----------------------------
@@ -81,36 +73,29 @@ CREATE TABLE `info_publish`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `user_id`(`user_id` ASC) USING BTREE,
   CONSTRAINT `info_publish_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of info_publish
 -- ----------------------------
-# INSERT INTO `info_publish` VALUES (1, 2, '数学', '高一', '高一数学', '星期一,星期三,星期五', '上午', '有责任心，从教5年。', '/uploads/teacher1.jpg');
-# INSERT INTO `info_publish` VALUES (2, 2, '数学', '高二', '高二数学', '星期二,星期四,星期六', '上午', '有责任心，从教5年。', '/uploads/teacher2.jpg');
-# INSERT INTO `info_publish` VALUES (3, 3, '语文', '高三', '高三语文', '星期一,星期三', '下午', '语文教学能手', '/uploads/teacher3.jpg');
-# INSERT INTO `info_publish` VALUES (4, 5, '英语', '高三', '高三英语', '星期二,星期四', '下午', '英语教学能手', '/uploads/teacher4.jpg');
-# INSERT INTO `info_publish` VALUES (5, 6, '生物', '高三', '高三生物', '星期三,星期五', '晚上', '高中生物速成', '/uploads/teacher5.jpg');
-
-INSERT INTO `info_publish` VALUES (1, 2, '数学', '高一', '高一数学', '星期一,星期三,星期五', '上午', '我是一名有责任心的数学老师，从教多年，擅长用生动有趣的方式讲解数学概念，帮助学生提高数学成绩。电话：13800138000', '/uploads/teacher1.jpg',1);
-INSERT INTO `info_publish` VALUES (2, 3, '语文', '高三', '高三语文', '星期一,星期三', '下午', '我是一名有责任心的语文老师，从教多年，擅长讲解语文知识点，帮助学生提高语文成绩。邮箱：15491512165@qq.com', '/uploads/teacher2.jpg',2);
-INSERT INTO `info_publish` VALUES (3, 4, '英语', '高三', '高三英语', '星期二,星期四', '下午', '我是一名有责任心的英语老师，从教多年，擅长讲解英语知识点，帮助学生提高英语成绩。电话：13900139000', '/uploads/teacher3.jpg',3);
-INSERT INTO `info_publish` VALUES (4, 5, '生物', '高三', '高三生物', '星期三,星期五', '晚上', '我是一名有责任心的生物老师，从教多年，擅长讲解生物知识点，帮助学生提高生物成绩。邮箱：3649189331@hit.edu.cn', '/uploads/teacher4.jpg',4);
-INSERT INTO `info_publish` VALUES (5, 6, '化学', '高一', '高一化学', '星期二,星期四', '下午', '我是一名有责任心的化学老师，从教多年，擅长讲解化学知识点，帮助学生提高化学成绩。电话：13700137000', '/uploads/teacher5.jpg',5);
-INSERT INTO `info_publish` VALUES (6, 7, '地理', '高二', '高二地理', '星期三,星期五', '晚上', '我是一名有责任心的地理老师，从教多年，擅长讲解地理知识点，帮助学生提高地理成绩。电话：13600136000', '/uploads/teacher6.jpg',6);
-INSERT INTO `info_publish` VALUES (7, 8, '物理', '高三', '高三物理', '星期一,星期三,星期五', '上午', '我是一名有责任心的物理老师，从教多年，擅长讲解物理知识点，帮助学生提高物理成绩。电话：13500135000', '/uploads/teacher7.jpg',7);
-INSERT INTO `info_publish` VALUES (8, 9, '历史', '高一', '高一历史', '星期二,星期四', '下午', '我是一名有责任心的历史老师，从教多年，擅长讲解历史知识点，帮助学生提高历史成绩。邮箱：1546494616@qq.com', '/uploads/teacher8.jpg',8);
-INSERT INTO `info_publish` VALUES (9, 10, '政治', '高二', '高二政治', '星期三,星期五', '晚上', '我是一名有责任心的政治老师，从教多年，擅长讲解政治知识点，帮助学生提高政治成绩。电话：13400134000', '/uploads/teacher9.jpg',9);
-INSERT INTO `info_publish` VALUES (10, 11, '英语', '高三', '高三英语', '星期二,星期四', '下午', '我是一名有责任心的英语老师，从教多年，擅长讲解英语知识点，帮助学生提高英语成绩。邮箱：1568156181@qq.com', '/uploads/teacher10.jpg',10);
-INSERT INTO `info_publish` VALUES (11, 12, '数学', '高一', '高一数学', '星期一,星期三,星期五', '上午', '我是一名有责任心的数学老师，从教多年，擅长用生动有趣的方式讲解数学概念，帮助学生提高数学成绩。电话：13800138000', '/uploads/teacher1.jpg',1);
-INSERT INTO `info_publish` VALUES (12, 13, '语文', '高三', '高三语文', '星期一,星期三', '下午', '我是一名有责任心的语文老师，从教多年，擅长讲解语文知识点，帮助学生提高语文成绩。邮箱：1564891651@qq.com', '/uploads/teacher2.jpg',2);
-INSERT INTO `info_publish` VALUES (13, 14, '生物', '高三', '高三生物', '星期三,星期五', '晚上', '我是一名有责任心的生物老师，从教多年，擅长讲解生物知识点，帮助学生提高生物成绩。电话：13900139000', '/uploads/teacher3.jpg',3);
-INSERT INTO `info_publish` VALUES (14, 15, '化学', '高一', '高一化学', '星期二,星期四', '下午', '我是一名有责任心的化学老师，从教多年，擅长讲解化学知识点，帮助学生提高化学成绩。邮箱：1945661658@qq.com', '/uploads/teacher4.jpg',4);
-INSERT INTO `info_publish` VALUES (15, 16, '地理', '高二', '高二地理', '星期三,星期五', '晚上', '我是一名有责任心的地理老师，从教多年，擅长讲解地理知识点，帮助学生提高地理成绩。电话：13700137000', '/uploads/teacher5.jpg',5);
-INSERT INTO `info_publish` VALUES (16, 17, '物理', '高三', '高三物理', '星期一,星期三,星期五', '上午', '我是一名有责任心的物理老师，从教多年，擅长讲解物理知识点，帮助学生提高物理成绩。邮箱：1984126188@qq.com', '/uploads/teacher6.jpg',4);
-INSERT INTO `info_publish` VALUES (17, 18, '历史', '高一', '高一历史', '星期二,星期四', '下午', '我是一名有责任心的历史老师，从教多年，擅长讲解历史知识点，帮助学生提高历史成绩。电话：13600136000', '/uploads/teacher7.jpg',3);
-INSERT INTO `info_publish` VALUES (18, 19, '政治', '高二', '高二政治', '星期三,星期五', '晚上', '我是一名有责任心的政治老师，从教多年，擅长讲解政治知识点，帮助学生提高政治成绩。电话：13500135000', '/uploads/teacher8.jpg',2);
-
+INSERT INTO `info_publish` VALUES (1, 2, '数学', '高一', '高一数学', '星期一', '上午', '我是一名有责任心的数学老师，从教多年，擅长用生动有趣的方式讲解数学概念，帮助学生提高数学成绩。电话：13800138000', '/uploads/teacher1.jpg', 7);
+INSERT INTO `info_publish` VALUES (2, 3, '语文', '高三', '高三语文', '星期一', '下午', '我是一名有责任心的语文老师，从教多年，擅长讲解语文知识点，帮助学生提高语文成绩。邮箱：15491512165@qq.com', '/uploads/teacher2.jpg', 5);
+INSERT INTO `info_publish` VALUES (3, 4, '英语', '高三', '高三英语', '星期二', '下午', '我是一名有责任心的英语老师，从教多年，擅长讲解英语知识点，帮助学生提高英语成绩。电话：13900139000', '/uploads/teacher3.jpg', 3);
+INSERT INTO `info_publish` VALUES (4, 5, '生物', '高三', '高三生物', '星期五', '晚上', '我是一名有责任心的生物老师，从教多年，擅长讲解生物知识点，帮助学生提高生物成绩。邮箱：3649189331@hit.edu.cn', '/uploads/teacher4.jpg', 4);
+INSERT INTO `info_publish` VALUES (5, 6, '化学', '高一', '高一化学', '星期四', '下午', '我是一名有责任心的化学老师，从教多年，擅长讲解化学知识点，帮助学生提高化学成绩。电话：13700137000', '/uploads/teacher5.jpg', 5);
+INSERT INTO `info_publish` VALUES (6, 7, '地理', '高二', '高二地理', '星期三', '晚上', '我是一名有责任心的地理老师，从教多年，擅长讲解地理知识点，帮助学生提高地理成绩。电话：13600136000', '/uploads/teacher6.jpg', 6);
+INSERT INTO `info_publish` VALUES (7, 8, '物理', '高三', '高三物理', '星期一', '上午', '我是一名有责任心的物理老师，从教多年，擅长讲解物理知识点，帮助学生提高物理成绩。电话：13500135000', '/uploads/teacher7.jpg', 7);
+INSERT INTO `info_publish` VALUES (8, 9, '历史', '高一', '高一历史', '星期二', '下午', '我是一名有责任心的历史老师，从教多年，擅长讲解历史知识点，帮助学生提高历史成绩。邮箱：1546494616@qq.com', '/uploads/teacher8.jpg', 8);
+INSERT INTO `info_publish` VALUES (9, 10, '政治', '高二', '高二政治', '星期三', '晚上', '我是一名有责任心的政治老师，从教多年，擅长讲解政治知识点，帮助学生提高政治成绩。电话：13400134000', '/uploads/teacher9.jpg', 9);
+INSERT INTO `info_publish` VALUES (10, 11, '英语', '高三', '高三英语', '星期二', '下午', '我是一名有责任心的英语老师，从教多年，擅长讲解英语知识点，帮助学生提高英语成绩。邮箱：1568156181@qq.com', '/uploads/teacher10.jpg', 10);
+INSERT INTO `info_publish` VALUES (11, 12, '数学', '高一', '高一数学', '星期一', '上午', '我是一名有责任心的数学老师，从教多年，擅长用生动有趣的方式讲解数学概念，帮助学生提高数学成绩。电话：13800138000', '/uploads/teacher1.jpg', 1);
+INSERT INTO `info_publish` VALUES (12, 13, '语文', '高三', '高三语文', '星期一', '下午', '我是一名有责任心的语文老师，从教多年，擅长讲解语文知识点，帮助学生提高语文成绩。邮箱：1564891651@qq.com', '/uploads/teacher2.jpg', 2);
+INSERT INTO `info_publish` VALUES (13, 14, '生物', '高三', '高三生物', '星期三', '晚上', '我是一名有责任心的生物老师，从教多年，擅长讲解生物知识点，帮助学生提高生物成绩。电话：13900139000', '/uploads/teacher3.jpg', 3);
+INSERT INTO `info_publish` VALUES (14, 15, '化学', '高一', '高一化学', '星期二', '下午', '我是一名有责任心的化学老师，从教多年，擅长讲解化学知识点，帮助学生提高化学成绩。邮箱：1945661658@qq.com', '/uploads/teacher4.jpg', 4);
+INSERT INTO `info_publish` VALUES (15, 16, '地理', '高二', '高二地理', '星期五', '晚上', '我是一名有责任心的地理老师，从教多年，擅长讲解地理知识点，帮助学生提高地理成绩。电话：13700137000', '/uploads/teacher5.jpg', 5);
+INSERT INTO `info_publish` VALUES (16, 17, '物理', '高三', '高三物理', '星期五', '上午', '我是一名有责任心的物理老师，从教多年，擅长讲解物理知识点，帮助学生提高物理成绩。邮箱：1984126188@qq.com', '/uploads/teacher6.jpg', 4);
+INSERT INTO `info_publish` VALUES (17, 18, '历史', '高一', '高一历史', '星期四', '下午', '我是一名有责任心的历史老师，从教多年，擅长讲解历史知识点，帮助学生提高历史成绩。电话：13600136000', '/uploads/teacher7.jpg', 3);
+INSERT INTO `info_publish` VALUES (18, 19, '政治', '高二', '高二政治', '星期三', '晚上', '我是一名有责任心的政治老师，从教多年，擅长讲解政治知识点，帮助学生提高政治成绩。电话：13500135000', '/uploads/teacher8.jpg', 2);
 
 -- ----------------------------
 -- Table structure for menu
@@ -147,7 +132,7 @@ CREATE TABLE `review`  (
   `name` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL COMMENT '评价人',
   `remark` varchar(1000) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL COMMENT '评价内容',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of review
@@ -173,8 +158,6 @@ INSERT INTO `review` VALUES (18, '郑十九', '帮助我在业余时间辅导了
 INSERT INTO `review` VALUES (19, '陈二十', '老师很值得信赖！');
 INSERT INTO `review` VALUES (20, '李二十一', '非常满意，下次有需要继续使用！');
 
-
-
 -- ----------------------------
 -- Table structure for user
 -- ----------------------------
@@ -190,25 +173,11 @@ CREATE TABLE `user`  (
   `role_id` int NULL DEFAULT NULL COMMENT '角色 0超级管理员，1老师，2学生',
   `isValid` varchar(4) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT 'Y' COMMENT '是否有效，Y有效，其他无效',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 38 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = DYNAMIC;
 
-# -- ----------------------------
-# -- Records of user
-# -- ----------------------------
-# INSERT INTO `user` VALUES (1, 'admin', '教学管理员', '123', 18, 1, '15946284922', 0, 'Y');
-# INSERT INTO `user` VALUES (2, 'zhangsan', '张三', '123456', 22, 1, '15529782988', 1, 'Y');
-# INSERT INTO `user` VALUES (3, 'user1', '章三', 'password1', 25, 1, '13800138000', 1, 'Y');
-# INSERT INTO `user` VALUES (4, 'user2', '李四', 'password2', 30, 0, '13900139000', 2, 'Y');
-# INSERT INTO `user` VALUES (5, 'user3', '王五', 'password3', 22, 1, '13700137000', 1, 'Y');
-# INSERT INTO `user` VALUES (6, 'user4', '赵六', 'password4', 35, 0, '13600136000', 1, 'Y');
-# INSERT INTO `user` VALUES (7, 'user5', '孙七', 'password5', 28, 1, '13500135000', 2, 'Y');
-# INSERT INTO `user` VALUES (8, 'user6', '周八', 'password6', 29, 0, '13400134000', 2, 'Y');
-# INSERT INTO `user` VALUES (9, 'user7', '吴九', 'password7', 33, 1, '13300133000', 1, 'Y');
-# INSERT INTO `user` VALUES (10, 'user8', '郑十', 'password8', 24, 0, '13200132000', 2, 'Y');
-# INSERT INTO `user` VALUES (11, 'user9', '陈十一', 'password9', 31, 1, '13100131000', 2, 'Y');
-# INSERT INTO `user` VALUES (12, 'user10', '钱十二', 'password10', 27, 0, '13000130000', 2, 'Y');
-# INSERT INTO `user` VALUES (13, 'boboppp', '波波', '123456', 24, 1, '18898899988', 2, 'Y');
-
+-- ----------------------------
+-- Records of user
+-- ----------------------------
 INSERT INTO `user` VALUES (1, 'admin', '教学管理员', '123', 18, 1, '15946284922', 0, 'Y');
 INSERT INTO `user` VALUES (2, 'user2', '张三', 'password2', 22, 1, '15529782988', 1, 'Y');
 INSERT INTO `user` VALUES (3, 'user3', '李四', 'password3', 30, 1, '13900139000', 1, 'Y');
@@ -246,6 +215,5 @@ INSERT INTO `user` VALUES (34, 'user34', '用户三十四', 'password34', 29, 1,
 INSERT INTO `user` VALUES (35, 'user35', '用户三十五', 'password35', 36, 1, '16398399722', 2, 'Y');
 INSERT INTO `user` VALUES (36, 'user36', '用户三十六', 'password36', 22, 0, '16298299711', 2, 'Y');
 INSERT INTO `user` VALUES (37, 'user37', '用户三十七', 'password37', 31, 1, '16198199700', 2, 'Y');
-
 
 SET FOREIGN_KEY_CHECKS = 1;
