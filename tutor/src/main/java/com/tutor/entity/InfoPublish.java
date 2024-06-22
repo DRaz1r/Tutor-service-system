@@ -52,6 +52,9 @@ public class InfoPublish implements Serializable {
     @ApiModelProperty(value = "图片Url")
     private String imageUrl;
 
+    @ApiModelProperty(value = "点赞数")
+    private Integer likes;
+
     // 这个字段在数据库表中没有对应的列，因此使用 @TableField 注解
     @TableField(exist = false)
     private String userName;

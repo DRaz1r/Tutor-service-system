@@ -13,37 +13,65 @@
       </el-select>
       <el-button type="primary" style="margin-left: 5px" @click="loadPost">查询</el-button>
       <el-button type="success" style="margin-left: 5px" @click="resetParam" >重置</el-button>
-      <el-button type="primary" style="margin-left: 5px" @click="add">新增</el-button>
+      <el-button type="warning" style="margin-left: 5px" @click="add">新增</el-button>
     </div>
     <el-table :data="tableData"
-              :header-cell-style="{background:'#f3f3fd',color:'#555'}"
+              :header-cell-style="{background:'#CCDDFF',color:'#555'}"
               border
     >
-      <el-table-column prop="id" label="ID" width="80">
+
+      <el-table-column prop="id" label="ID" width="128">
       </el-table-column>
-      <el-table-column prop="no" label="账号" width="80">
+      <el-table-column prop="no" label="账号" width="128">
       </el-table-column>
-      <el-table-column prop="name" label="姓名" width="100">
+      <el-table-column prop="name" label="姓名" width="128">
       </el-table-column>
-      <el-table-column prop="age" label="年龄" width="80">
+      <el-table-column prop="age" label="年龄" width="128">
       </el-table-column>
-      <el-table-column prop="sex" label="性别" width="80">
+      <el-table-column prop="sex" label="性别" width="128">
         <template slot-scope="scope">
           <el-tag
-            :type="scope.row.sex === 1? 'primary' : 'success'"
+            :type="scope.row.sex === 1? 'primary' : 'danger'"
             disable-transitions>{{scope.row.sex === 1? '男' : '女'}}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="roleId" label="角色" width="110">
+
+      <el-table-column prop="roleId" label="角色" width="128">
         <template slot-scope="scope">
           <el-tag
-            :type="scope.row.roleId === 0? 'danger' : (scope.row.roleId === 1? 'primary' : 'success')"
+            :type="scope.row.roleId === 0? 'danger' : (scope.row.roleId === 1? 'warning' : 'info')"
             disable-transitions>{{scope.row.roleId === 0? '超级管理员' : (scope.row.roleId === 1? '教师' : '用户')}}</el-tag>
         </template>
       </el-table-column>
-      <el-table-column prop="phone" label="电话" width="120">
+<!--      <el-table-column prop="phone" label="电话" width="150">-->
+<!--      </el-table-column>-->
+<!--      <el-table-column prop="phone" label="电话" width="180">-->
+<!--        <template slot-scope="scope">-->
+<!--          <div style="height: 60px;">-->
+<!--            {{ scope.row.phone }}-->
+<!--          </div>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
+
+<!--      <el-table-column prop="phone" label="电话" width="180">-->
+<!--        <template slot-scope="scope">-->
+<!--          <div style="text-align: center; vertical-align: middle; height: 60px;">-->
+<!--            {{ scope.row.phone }}-->
+<!--          </div>-->
+<!--        </template>-->
+<!--      </el-table-column>-->
+
+      <el-table-column prop="phone" label="电话" width="180">
+        <template slot-scope="scope">
+          <div style="height: 60px; line-height: 60px; text-align: center;">
+            {{ scope.row.phone }}
+          </div>
+        </template>
       </el-table-column>
-      <el-table-column prop="operate" label="操作" width="170">
+
+
+
+      <el-table-column prop="operate" label="操作" width="190">
         <template slot-scope="scope">
           <el-button size="small" type="success" @click="mod(scope.row)">编辑</el-button>
           <el-popconfirm
