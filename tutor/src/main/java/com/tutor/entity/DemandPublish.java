@@ -1,6 +1,7 @@
 package com.tutor.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -42,4 +43,7 @@ public class DemandPublish implements Serializable {
     @ApiModelProperty(value = "家教需求")
     private String requirement;
 
+    // 这个字段在数据库表中没有对应的列，因此使用 @TableField 注解
+    @TableField(exist = false)
+    private String userName;
 }
