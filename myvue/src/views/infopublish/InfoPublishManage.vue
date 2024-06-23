@@ -25,11 +25,11 @@
     </div>
 
     <div class="grid-container">
-      <info-publish-item 
-        v-for="item in tableData" 
-        :key="item.id" 
-        :item="item" 
-        :backend-url="backendUrl" 
+      <info-publish-item
+        v-for="item in tableData"
+        :key="item.id"
+        :item="item"
+        :backend-url="backendUrl"
         @like="handleLike">
       </info-publish-item>
     </div>
