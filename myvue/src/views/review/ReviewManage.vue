@@ -18,14 +18,6 @@
           </div>
         </template>
       </el-table-column>
-
-<!--      <el-table-column prop="name" label="评价人" width="200">-->
-<!--        <template slot-scope="scope">-->
-<!--          <div style="height: 56px;">-->
-<!--            {{ scope.row.name }}-->
-<!--          </div>-->
-<!--        </template>-->
-<!--      </el-table-column>-->
       <el-table-column prop="name" label="评价人" width="200">
         <template slot-scope="scope">
           <div style="height: 56px; font-size: 16px;">
@@ -41,7 +33,7 @@
           </div>
         </template>
       </el-table-column>
-      <el-table-column prop="operate" label="操作" width="170">
+      <el-table-column v-if="isAdmin" prop="operate" label="操作" width="170">
         <template slot-scope="scope">
           <el-button size="small" type="success" @click="mod(scope.row)">编辑</el-button>
           <el-popconfirm
@@ -58,7 +50,7 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="pageNum"
-      :page-sizes="[2, 5, 7]"
+      :page-sizes="[5, 10]"
       :page-size="pageSize"
       layout="total, sizes, prev, pager, next, jumper"
       :total="total">
@@ -71,7 +63,7 @@
       <el-form ref="form" :rules="rules" :model="form" label-width="70px">
         <el-form-item label="评价人" prop="name">
           <el-col :span="20">
-            <el-input v-model="form.name"></el-input>
+            <el-input v-model="form.name" :disabled="isNameDisabled"></el-input>
           </el-col>
         </el-form-item>
         <el-form-item label="评价内容" prop="remark">
@@ -79,7 +71,6 @@
             <el-input type="textarea" v-model="form.remark"></el-input>
           </el-col>
         </el-form-item>
-
       </el-form>
       <span slot="footer" class="dialog-footer">
     <el-button @click="centerDialogVisible = false">取 消</el-button>
@@ -96,8 +87,11 @@ export default {
   data() {
 
     return {
+      username: '',
+      isNameDisabled: false,
+      isAdmin: false,
       tableData:[],
-      pageSize:5,
+      pageSize:10,
       pageNum:1,
       total:0,
       name:'',
@@ -139,7 +133,6 @@ export default {
       this.$axios.get(this.$httpUrl+'/review/delete?id='+id).then(res=>res.data).then(res=>{
         console.log(res)
         if(res.code==200){
-
           this.$message({
             message: '操作成功！',
             type: 'success'
@@ -159,14 +152,13 @@ export default {
       this.$axios.post(this.$httpUrl+'/review/save',this.form).then(res=>res.data).then(res=>{
         console.log(res)
         if(res.code==200){
-
           this.$message({
             message: '操作成功！',
             type: 'success'
           });
           this.centerDialogVisible = false
           this.loadPost()
-          this. resetForm()
+          this.resetForm()
         }else{
           this.$message({
             message: '操作失败！',
@@ -246,6 +238,16 @@ export default {
     }
   },
   beforeMount() {
+    const userStr = sessionStorage.getItem("CurUser");
+    if (userStr) {
+      const user = JSON.parse(userStr);
+      this.form.name = user.name;
+      // 设置输入框为不可编辑
+      this.isNameDisabled = true;
+      if (user.roleId == 0) {
+        this.isAdmin = true;
+      }
+    }
     this.loadPost()
   }
 

@@ -274,19 +274,6 @@ export default {
 };
 </script>
 
-<!--.grid-container {-->
-<!--display: grid;-->
-<!--grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 控制列数和每列最小/最大宽度 */-->
-<!--gap: 20px; /* 设置块之间的间隙 */-->
-<!--}-->
-
-<!--.grid-item {-->
-<!--background-color: #fff; /* 设置块的背景色 */-->
-<!--border: 1px solid #ccc; /* 设置块的边框 */-->
-<!--border-radius: 5px; /* 设置块的圆角 */-->
-<!--padding: 20px; /* 设置块的内边距 */-->
-<!--}-->
-
 <style scoped>
 
 .grid-container {
