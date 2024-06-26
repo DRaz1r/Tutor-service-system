@@ -57,8 +57,8 @@
       <el-form ref="form" :rules="rules" :model="form" label-width="70px">
         <el-form-item label="用户ID" prop="userId">
           <el-col :span="20">
-            <el-input v-model="form.userId"></el-input>
-          </el-col>
+            <el-input v-model="form.userId" :disabled="isUserIdDisabled"></el-input>
+          </el-col> 
         </el-form-item>
 
         <el-form-item label="科目" prop="subjects">
@@ -94,6 +94,7 @@
 export default {
   data() {
     return {
+      isUserIdDisabled: false,
       tableData: [],
       pageSize: 6,
       pageNum: 1,
@@ -257,6 +258,17 @@ export default {
     }
   },
   beforeMount() {
+    const userStr = sessionStorage.getItem("CurUser");
+    if (userStr) {
+      const user = JSON.parse(userStr);
+      // 判断 user.roleId 是否不为 0
+      if (user.roleId !== 0) {
+        // 设置 form.userId 的值
+        this.form.userId = user.id;
+        // 设置输入框为不可编辑
+        this.isUserIdDisabled = true;
+      }
+    }
     this.loadPost();
   }
 };
